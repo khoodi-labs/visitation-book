@@ -20,3 +20,19 @@
 .login_container{
     margin-top: 10%;
 }
+.image-logo-box-top ,.image-logo-box-bottom{
+    display: block;  height: 60px; overflow: hidden;
+}
+.image-logo-box-top img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  margin-top: -5px;
+   
+}
+
+.image-logo-box-bottom img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  margin-top: -110px;
+   
+}

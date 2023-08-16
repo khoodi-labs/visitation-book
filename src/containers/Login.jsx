@@ -16,6 +16,10 @@ import '../assets/css/Login.css'
 
 				</div>
 				<div className="col-md-4 login_form">
+                <div className="image-logo-box-top">
+                    <img src={companyLogo} alt="BigCo Inc. logo"/>
+                    </div>
+               
                     <h1 className='login-header-text'> LOGIN FORM </h1>
 					<form role="form">
 						<div className="form-group">
@@ -38,6 +42,9 @@ import '../assets/css/Login.css'
 							Submit
 						</button>
 					</form>
+                    <div className="image-logo-box-bottom">
+                    <img src={companyLogo} alt="BigCo Inc. logo"/>
+                    </div>
 				</div>
 			</div>
 		</div>
