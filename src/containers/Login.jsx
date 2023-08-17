@@ -1,6 +1,8 @@
 import React from 'react'
 import companyLogo from '../assets/images/image1.png';
 import '../assets/css/Login.css'
+import InputElement from '../components/Common/InputElement';
+import ButtonElement from '../components/Common/ButtonElement';
 
  function Login() {
   return (
@@ -22,29 +24,22 @@ import '../assets/css/Login.css'
                
                     <h1 className='login-header-text'> LOGIN FORM </h1>
 					<form role="form">
-						<div className="form-group">
-							 
-							<label for="exampleInputEmail1">
-								Username : 
-							</label>
-							<input type="text" className="form-control" id="exampleInputEmail1" />
+						<div className="form-group">  
+                            <InputElement label = "Username : " type="text" className="form-control" id="username" />
+ 
 						</div>
 						<div classNameName="form-group">
-							 
-							<label for="exampleInputPassword1">
-								Password : 
-							</label>
-							<input type="password" className="form-control" id="exampleInputPassword1" />
+							 <InputElement label = "Password : " type="password" className="form-control" id="password" />
+
 						</div>
 						 <br/>
 					 
-						<button type="submit" className="btn btn-primary">
-							Submit
-						</button>
+                     <ButtonElement  type="submit" className="btn btn-primary login-btn" label ="LOGIN"  />
+					 
 					</form>
-                    <div className="image-logo-box-bottom">
-                    <img src={companyLogo} alt="BigCo Inc. logo"/>
-                    </div>
+                        <div className="image-logo-box-bottom">
+                        <img src={companyLogo} alt="BigCo Inc. logo"/>
+                        </div>
 				</div>
 			</div>
 		</div>
