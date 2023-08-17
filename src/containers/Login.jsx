@@ -3,8 +3,19 @@ import companyLogo from '../assets/images/image1.png';
 import '../assets/css/Login.css'
 import InputElement from '../components/Common/InputElement';
 import ButtonElement from '../components/Common/ButtonElement';
+import LoginService from '../services/LoginService';
 
  function Login() {
+
+    const userLoginService = LoginService();
+
+function handleLogin(e){
+    e.preventDefault()
+    //handle submission and etc.. 
+    alert(userLoginService.validate("see","seee"));
+}
+
+    
   return (
     <div className="container-fluid">
 	<div className="row">
@@ -23,7 +34,7 @@ import ButtonElement from '../components/Common/ButtonElement';
                     </div>
                
                     <h1 className='login-header-text'> LOGIN FORM </h1>
-					<form role="form">
+					<form role="form" onSubmit={handleLogin}>
 						<div className="form-group">  
                             <InputElement label = "Username : " type="text" className="form-control" id="username" />
  
