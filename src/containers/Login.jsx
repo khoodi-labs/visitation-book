@@ -26,7 +26,7 @@ function handleLogin(e){
                
                
                       
-					<form role="form" onSubmit={handleLogin}>
+					<form   onSubmit={handleLogin}>
 						<div className="form-group">  
                             <InputElement  value="" placeholder="<i class='fa-brands fa-google'></i>"  label = "Username : " type="text" className="form-control" id="username" />
  

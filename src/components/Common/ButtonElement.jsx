@@ -4,7 +4,7 @@ function ButtonElement(props) {
     const {type,className,onclick,label} = props;
   return (
     <div>
-        	<button type={type} className={className}>{label}</button>
+        	<button type={type} onClick={onclick}  className={className}>{label}</button>
     </div>
   )
 }
