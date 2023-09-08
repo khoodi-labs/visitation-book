@@ -25,10 +25,10 @@ function handleLogin(e){
       <div className="col-md-3 login_form">
                
                
-                    
+                      
 					<form role="form" onSubmit={handleLogin}>
 						<div className="form-group">  
-                            <InputElement label = "Username : " type="text" className="form-control" id="username" />
+                            <InputElement  value="" placeholder="<i class='fa-brands fa-google'></i>"  label = "Username : " type="text" className="form-control" id="username" />
  
 						</div>
 						<div classNameName="form-group">
