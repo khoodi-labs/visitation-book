@@ -1,19 +1,15 @@
-.image-logo-box{
-    /* margin: auto; 
-     background: #000;    */
-     display: block;
-}
-.image-logo-box img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5%;
-    /* width: 250px;  */
+body{
+    background: #E5E5E5; margin-left: 25px;
+    font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
 .login_form{
-    margin: 10px;
-    border-left: 1px solid #000;
+    
+    border: 1px solid #000;
+     border-radius: 30px; 
+    background: #fff; height: 600px;
+    padding: 10px;
 }
 .login-header-text{
     text-align: center;
@@ -36,4 +32,17 @@
     margin-left: auto;
     margin-right: auto;  margin-top: -110px;
    
+}
+
+.image-logo-box{
+    /* margin: auto; 
+     background: #000;    */
+     display: block;
+}
+.image-logo-box img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+    /* width: 250px;  */
 }

@@ -21,19 +21,11 @@ function handleLogin(e){
 	<div className="row">
 		<div className="col-md-12 login_container">
 			<div className="row">
-				<div className="col-md-6">
-                    <div className="image-logo-box">
-                    <img src={companyLogo} alt="BigCo Inc. logo"/>
-                    </div>
-               
 
-				</div>
-				<div className="col-md-4 login_form">
-                <div className="image-logo-box-top">
-                    <img src={companyLogo} alt="BigCo Inc. logo"/>
-                    </div>
+      <div className="col-md-3 login_form">
                
-                    <h1 className='login-header-text'> LOGIN FORM </h1>
+               
+                    
 					<form role="form" onSubmit={handleLogin}>
 						<div className="form-group">  
                             <InputElement label = "Username : " type="text" className="form-control" id="username" />
@@ -52,6 +44,16 @@ function handleLogin(e){
                         <img src={companyLogo} alt="BigCo Inc. logo"/>
                         </div>
 				</div>
+
+
+				<div className="col-md-6">
+                    <div className="image-logo-box"> 
+                    <img src={companyLogo} alt="BigCo Inc. logo"/>
+                    </div>
+               
+
+				</div>
+			
 			</div>
 		</div>
 	</div>
