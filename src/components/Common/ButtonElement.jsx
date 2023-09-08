@@ -1,10 +1,10 @@
 import React from 'react'
 
 function ButtonElement(props) {
-    const {type,className,onclick,label} = props;
+    const {type,className,onclick,label,facon} = props;
   return (
-    <div>
-        	<button type={type} onClick={onclick}  className={className}>{label}</button>
+    <div  className='buttonDiv'>
+        	{facon} <button type={type} onClick={onclick}  className={className}>{label}</button>
     </div>
   )
 }

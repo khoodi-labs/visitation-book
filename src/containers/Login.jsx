@@ -5,6 +5,11 @@ import InputElement from '../components/Common/InputElement';
 import ButtonElement from '../components/Common/ButtonElement';
 import LoginService from '../services/LoginService';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser,faLock,faRightToBracket,faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+
+
+
  function Login() {
 
     const userLoginService = LoginService();
@@ -23,21 +28,20 @@ function handleLogin(e){
 			<div className="row">
 
       <div className="col-md-3 login_form">
-               
-               
-                      
+                
+       <div>  <FontAwesomeIcon icon={faCircleUser} className="login-user-icon" /> </div>
 					<form   onSubmit={handleLogin}>
 						<div className="form-group">  
-                            <InputElement  value="" placeholder="<i class='fa-brands fa-google'></i>"  label = "Username : " type="text" className="form-control" id="username" />
- 
+                            <InputElement facon={<FontAwesomeIcon icon={faUser} className="user-icon" />}  value=""    label = "Username : " type="text" className="form-control" id="username" />
+						
 						</div>
 						<div classNameName="form-group">
-							 <InputElement label = "Password : " type="password" className="form-control" id="password" />
+							 <InputElement  facon={<FontAwesomeIcon icon={faLock} className="user-password-icon" />} label = "Password : " type="password" className="form-control" id="password" />
 
 						</div>
 						 <br/>
 					 
-                     <ButtonElement  type="submit" className="btn btn-primary login-btn" label ="LOGIN"  />
+                     <ButtonElement   facon={<FontAwesomeIcon icon={faRightToBracket} className="button-login-icon" />} type="submit" className="btn btn-primary login-btn" label ="LOGIN"  />
 					 
 					</form>
                         <div className="image-logo-box-bottom">
@@ -45,10 +49,10 @@ function handleLogin(e){
                         </div>
 				</div>
 
-
-				<div className="col-md-6">
+				 
+				<div className="col-md-8 div-right-main">
                     <div className="image-logo-box"> 
-                    <img src={companyLogo} alt="BigCo Inc. logo"/>
+                    
                     </div>
                
 
