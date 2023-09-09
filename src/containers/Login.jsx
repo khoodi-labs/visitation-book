@@ -13,7 +13,7 @@ import AlertElement from '../components/Common/AlertElement';
 
 
 
-function Login ()   {
+function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [alertCss, setAlertCss] = useState("alert alert-info alert-dismissable");
@@ -22,21 +22,26 @@ function Login ()   {
 
 	const auth = AuthService();
 
-	const  handleLogin=(e)=> {
+	const handleLogin = (e) => {
 		e.preventDefault()
 		setAlertMsg("Processing...");
-	 
+
 		const result = auth.validate(username, password);
 		alert(result);
-		if(result === false){
+		if (result === false) {
 			setAlertCss("alert alert-warning alert-dismissable");
 			setAlertMsg("Invalid username and password ");
 			return;
 		}
-		 
+
+		setAlertCss("alert alert-success alert-dismissable");
+		setAlertMsg("Succesfully Logged in ");
+
+		
+
 	}
 
- 
+
 
 	return (
 		<div className="container-fluid">
@@ -53,11 +58,11 @@ function Login ()   {
 
 							<form onSubmit={handleLogin}>
 								<div className="form-group">
-									<InputElement  value={username} onChange={(e)=> setUsername(e.target.value) } facon={<FontAwesomeIcon icon={faUser} className="user-icon" />}   label="Username : " type="text" className="form-control" id="username" />
+									<InputElement value={username} onChange={(e) => setUsername(e.target.value)} facon={<FontAwesomeIcon icon={faUser} className="user-icon" />} label="Username : " type="text" className="form-control" id="username" />
 
 								</div>
 								<div classNameName="form-group">
-									<InputElement facon={<FontAwesomeIcon icon={faLock} value={password}   onChange={(e)=> setPassword(e.target.value) }  className="user-password-icon" />} label="Password : " type="password" className="form-control" id="password" />
+									<InputElement value={password} onChange={(e) => setPassword(e.target.value)} facon={<FontAwesomeIcon icon={faLock} className="user-password-icon" />} label="Password : " type="password" className="form-control" id="password" />
 								</div>
 								<br />
 
