@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import companyLogo from '../assets/images/image1.png';
 import '../assets/css/Login.css'
 import InputElement from '../components/Common/InputElement';
 import ButtonElement from '../components/Common/ButtonElement';
-import LoginService from '../services/LoginService';
+import AuthService from '../services/AuthService';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faRightToBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
@@ -12,18 +13,34 @@ import footer_image from '../assets/images/footer.jpg';
 import AlertElement from '../components/Common/AlertElement';
 
 
-import React, { useState } from 'react';
-
 
 function Login() {
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [alertCss, setAlertCss] = useState("alert alert-info alert-dismissable");
+	const [alertMsg, setAlertMsg] = useState("  Username and Password");
 
-	const userLoginService = LoginService();
+	const navigate = useNavigate();
 
-	function handleLogin(e) {
+	const auth = AuthService();
+
+	const handleLogin = (e) => {
 		e.preventDefault()
-		//handle submission and etc.. 
-		alert(userLoginService.validate("see", "seee"));
+		setAlertMsg("Processing...");
+
+		if (auth.validate(username, password) === false) {
+			setAlertCss("alert alert-warning alert-dismissable");
+			setAlertMsg("Invalid username or password ");
+			return;
+		}
+
+		setAlertCss("alert alert-success alert-dismissable");
+		setAlertMsg("Succesfully Logged in "); 
+		
+		//todo: go to the dashboard
+		navigate('/dashboard');
 	}
+
 
 
 	return (
@@ -36,17 +53,16 @@ function Login() {
 
 							<div>  <FontAwesomeIcon icon={faCircleUser} className="login-user-icon" /> </div>
 
-							<AlertElement cssClass="alert alert-warning alert-dismissable" msgtype="Warning!" msgDetail="invalid credentials" />
+							<AlertElement cssClass={alertCss} msgtype="Warning!" msgDetail={alertMsg} />
 
 
 							<form onSubmit={handleLogin}>
 								<div className="form-group">
-									<InputElement facon={<FontAwesomeIcon icon={faUser} className="user-icon" />} value="" label="Username : " type="text" className="form-control" id="username" />
+									<InputElement value={username} onChange={(e) => setUsername(e.target.value)} facon={<FontAwesomeIcon icon={faUser} className="user-icon" />} label="Username : " type="text" className="form-control" id="username" />
 
 								</div>
 								<div classNameName="form-group">
-									<InputElement facon={<FontAwesomeIcon icon={faLock} className="user-password-icon" />} label="Password : " type="password" className="form-control" id="password" />
-
+									<InputElement value={password} onChange={(e) => setPassword(e.target.value)} facon={<FontAwesomeIcon icon={faLock} className="user-password-icon" />} label="Password : " type="password" className="form-control" id="password" />
 								</div>
 								<br />
 

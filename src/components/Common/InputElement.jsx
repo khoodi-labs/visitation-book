@@ -13,7 +13,7 @@ function InputElement(props) {
 
       </label>
       <div className="input-group">
-        <input placeholder={placeholder} value={value} type={type} className={className} id={id} onChange={onChange} />
+        <input  value={value} type={type} className={className} id={id} onChange={onChange} />
       </div>
 
     </div>
