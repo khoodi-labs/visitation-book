@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import companyLogo from '../assets/images/image1.png';
 import '../assets/css/Login.css'
 import InputElement from '../components/Common/InputElement';
@@ -19,6 +20,7 @@ function Login() {
 	const [alertCss, setAlertCss] = useState("alert alert-info alert-dismissable");
 	const [alertMsg, setAlertMsg] = useState("  Username and Password");
 
+	const navigate = useNavigate();
 
 	const auth = AuthService();
 
@@ -26,19 +28,17 @@ function Login() {
 		e.preventDefault()
 		setAlertMsg("Processing...");
 
-		const result = auth.validate(username, password);
-		alert(result);
-		if (result === false) {
+		if (auth.validate(username, password) === false) {
 			setAlertCss("alert alert-warning alert-dismissable");
-			setAlertMsg("Invalid username and password ");
+			setAlertMsg("Invalid username or password ");
 			return;
 		}
 
 		setAlertCss("alert alert-success alert-dismissable");
-		setAlertMsg("Succesfully Logged in ");
-
+		setAlertMsg("Succesfully Logged in "); 
 		
-
+		//todo: go to the dashboard
+		navigate('/dashboard');
 	}
 
 
