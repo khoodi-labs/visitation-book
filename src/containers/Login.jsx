@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import companyLogo from '../assets/images/image1.png';
 import '../assets/css/Login.css'
 import InputElement from '../components/Common/InputElement';
@@ -12,18 +12,31 @@ import footer_image from '../assets/images/footer.jpg';
 import AlertElement from '../components/Common/AlertElement';
 
 
- 
-function Login() {
+
+function Login ()   {
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [alertCss, setAlertCss] = useState("alert alert-info alert-dismissable");
+	const [alertMsg, setAlertMsg] = useState("  Username and Password");
+
 
 	const auth = AuthService();
 
-	function handleLogin(e) {
+	const  handleLogin=(e)=> {
 		e.preventDefault()
-		//handle submission and etc.. 
-	//	const isAuthenticated = auth.validate(	)
-		alert(auth.validate("see", "seee"));
+		setAlertMsg("Processing...");
+	 
+		const result = auth.validate(username, password);
+		alert(result);
+		if(result === false){
+			setAlertCss("alert alert-warning alert-dismissable");
+			setAlertMsg("Invalid username and password ");
+			return;
+		}
+		 
 	}
 
+ 
 
 	return (
 		<div className="container-fluid">
@@ -35,17 +48,16 @@ function Login() {
 
 							<div>  <FontAwesomeIcon icon={faCircleUser} className="login-user-icon" /> </div>
 
-							<AlertElement cssClass="alert alert-warning alert-dismissable" msgtype="Warning!" msgDetail="invalid credentials" />
+							<AlertElement cssClass={alertCss} msgtype="Warning!" msgDetail={alertMsg} />
 
 
 							<form onSubmit={handleLogin}>
 								<div className="form-group">
-									<InputElement facon={<FontAwesomeIcon icon={faUser} className="user-icon" />} value="" label="Username : " type="text" className="form-control" id="username" />
+									<InputElement  value={username} onChange={(e)=> setUsername(e.target.value) } facon={<FontAwesomeIcon icon={faUser} className="user-icon" />}   label="Username : " type="text" className="form-control" id="username" />
 
 								</div>
 								<div classNameName="form-group">
-									<InputElement facon={<FontAwesomeIcon icon={faLock} className="user-password-icon" />} label="Password : " type="password" className="form-control" id="password" />
-
+									<InputElement facon={<FontAwesomeIcon icon={faLock} value={password}   onChange={(e)=> setPassword(e.target.value) }  className="user-password-icon" />} label="Password : " type="password" className="form-control" id="password" />
 								</div>
 								<br />
 

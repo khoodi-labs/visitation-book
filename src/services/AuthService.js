@@ -10,8 +10,8 @@ export default function AuthService(){
     }
 
     const user2 = {
-        username: "rita@gmail.com",
-        password:"password"
+        username: "abc",
+        password:"abc"
     }
 
     const users = [user1,user2];
@@ -19,13 +19,20 @@ export default function AuthService(){
     //todo: simulating the service structure 
     function validateUsernameAndPassword(username,password){
 
-        if(users != null){
-            users.forEach( (user) =>{
-                if(user.password === password && user.username === username)
-                    return true;
-
-            });
+        alert(username);
+       
+        for(let i = 0; i<users.length; i ++){
+            const userDetail = users[i];
+            if(userDetail.username.trim() != username.trim()){
+                alert("bingo");
+                alert(userDetail.username.trim());
+                alert(username.trim());
+            }
+            alert(userDetail.username)
         }
+
+
+ 
 
         return false;
     }
