@@ -1,4 +1,6 @@
-
+/*
+moverr@gmail.com 09/09/23
+*/
 
 export default function AuthService(){
     
@@ -13,17 +15,18 @@ export default function AuthService(){
     }
 
     const users = [user1,user2];
-    
+
     //todo: simulating the service structure 
     function validateUsernameAndPassword(username,password){
 
         if(users != null){
             users.forEach( (user) =>{
-                if(user.password == password && user.username === username)
+                if(user.password === password && user.username === username)
                     return true;
 
             });
         }
+
         return false;
     }
 

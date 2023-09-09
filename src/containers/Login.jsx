@@ -20,6 +20,7 @@ function Login() {
 	function handleLogin(e) {
 		e.preventDefault()
 		//handle submission and etc.. 
+	//	const isAuthenticated = auth.validate(	)
 		alert(auth.validate("see", "seee"));
 	}
 
