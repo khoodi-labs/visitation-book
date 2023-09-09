@@ -8,7 +8,8 @@ import LoginService from '../services/LoginService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faLock,faRightToBracket,faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 
-
+import footer_image from '../assets/images/footer.jpg';
+import AlertElement from '../components/Common/AlertElement';
 
  function Login() {
 
@@ -30,6 +31,10 @@ function handleLogin(e){
       <div className="col-md-3 login_form">
                 
        <div>  <FontAwesomeIcon icon={faCircleUser} className="login-user-icon" /> </div>
+	 
+	 			<AlertElement cssClass="alert alert-warning alert-dismissable" msgtype="Warning!" msgDetail="invalid credentials"/>
+
+
 					<form   onSubmit={handleLogin}>
 						<div className="form-group">  
                             <InputElement facon={<FontAwesomeIcon icon={faUser} className="user-icon" />}  value=""    label = "Username : " type="text" className="form-control" id="username" />
@@ -44,15 +49,13 @@ function handleLogin(e){
                      <ButtonElement   facon={<FontAwesomeIcon icon={faRightToBracket} className="button-login-icon" />} type="submit" className="btn btn-primary login-btn" label ="LOGIN"  />
 					 
 					</form>
-                        <div className="image-logo-box-bottom">
-                        <img src={companyLogo} alt="BigCo Inc. logo"/>
-                        </div>
+                      
 				</div>
 
 				 
 				<div className="col-md-8 div-right-main">
                     <div className="image-logo-box"> 
-                    
+                   
                     </div>
                
 
@@ -61,6 +64,7 @@ function handleLogin(e){
 			</div>
 		</div>
 	</div>
+	 
 </div>
   )
 }

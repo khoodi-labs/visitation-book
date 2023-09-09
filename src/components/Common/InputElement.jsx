@@ -12,7 +12,10 @@ function InputElement(props) {
     {facon}   {label}
     
     </label>
+    <div className="input-group">
     <input placeholder={placeholder} value={value} type={type} className={className} id={id} onChange={onChange}  />
+    </div>
+   
   </div>
 
     

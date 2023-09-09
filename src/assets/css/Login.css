@@ -9,7 +9,7 @@ body{
     
     border: 1px solid #b1a9a9;
      border-radius: 100px 2px 50px 20px; 
-    background: #f1f1f1; height: 500px;
+    background: #f1f1f1; min-height: 550px;
     padding: 40px; padding-top: 120px;
 }
 .login-header-text{
@@ -75,3 +75,5 @@ body{
     background: #f1f1f1; height: 500px;
     padding: 40px; padding-top: 120px; margin-left: 10px;
 }
+
+ 
