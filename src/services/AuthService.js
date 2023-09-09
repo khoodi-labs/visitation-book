@@ -1,6 +1,6 @@
 
 
-export default function LoginService(){
+export default function AuthService(){
 
     function validateUsernameAndPassword(username,password){
 

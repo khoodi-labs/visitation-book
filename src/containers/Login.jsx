@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import companyLogo from '../assets/images/image1.png';
 import '../assets/css/Login.css'
 import InputElement from '../components/Common/InputElement';
 import ButtonElement from '../components/Common/ButtonElement';
-import LoginService from '../services/LoginService';
+import AuthService from '../services/AuthService';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faRightToBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
@@ -12,17 +12,15 @@ import footer_image from '../assets/images/footer.jpg';
 import AlertElement from '../components/Common/AlertElement';
 
 
-import React, { useState } from 'react';
-
-
+ 
 function Login() {
 
-	const userLoginService = LoginService();
+	const auth = AuthService();
 
 	function handleLogin(e) {
 		e.preventDefault()
 		//handle submission and etc.. 
-		alert(userLoginService.validate("see", "seee"));
+		alert(auth.validate("see", "seee"));
 	}
 
 
