@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import companyLogo from '../assets/images/image1.png';
+import { useNavigate } from "react-router-dom"; 
 import '../assets/css/Login.css'
 import InputElement from '../components/Common/InputElement';
 import ButtonElement from '../components/Common/ButtonElement';
@@ -9,7 +8,7 @@ import AuthService from '../services/AuthService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faRightToBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 
-import footer_image from '../assets/images/footer.jpg';
+ 
 import AlertElement from '../components/Common/AlertElement';
 
 
@@ -40,7 +39,6 @@ function Login() {
 		//todo: go to the dashboard
 		navigate('/dashboard');
 	}
-
 
 
 	return (
@@ -77,7 +75,6 @@ function Login() {
 							<div className="image-logo-box">
 
 							</div>
-
 
 						</div>
 
