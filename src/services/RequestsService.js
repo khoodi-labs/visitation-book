@@ -1,8 +1,4 @@
-import React from "react";
-
-function Requests() {
-  
-  const fetchRequests = () => {};
+const RequestService = () => {
   const data = [
     {
       id: "1",
@@ -56,36 +52,27 @@ function Requests() {
     },
   ];
 
-  return (
-    <div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Host</th>
-            <th>Guest</th>
-            <th>Status</th>
-            <th>Visit Type</th>
-            <th>Visit Date</th>
-            <th>Date Created</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.host.firstName +" "+ item.host.lastName}</td>
-              <td>{item.guest.firstName +" "+ item.host.lastName}</td>
-              <td>{item.status}</td>
-              <td>{item.visitationType}</td>
-              <td>{item.visitationDate}</td>
-              <td>{item.dateCreated}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
+  const getList = (limit, offset, query) => {
+    return data;
+  };
 
-export default Requests;
+  const getByID = (id) => {
+    //get item by id
+  };
+
+  const archive = (id) => {
+    //send archive data
+  };
+
+  const save = (data) => {
+    //todo: send save data
+  };
+
+  return {
+    list: getList,
+    get: getByID,
+    archive: archive,
+    save: save,
+  };
+};
+export default RequestService;
