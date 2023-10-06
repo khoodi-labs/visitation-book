@@ -11,7 +11,7 @@ function Requests() {
     const data = RequestService().list(offset, limit, query);
     return data.map((item) => (
       <tr key={item.id}>
-        <td>{item.id}</td> 
+        <td>{item.id}</td>
         <td>{item.host.firstName + " " + item.host.lastName}</td>
         <td>{item.guest.firstName + " " + item.host.lastName}</td>
         <td>{item.status}</td>
@@ -22,12 +22,10 @@ function Requests() {
       </tr>
     ));
   };
-  
+
   return (
     <div>
-      <div>
-        Print, Export , Import , Search 
-      </div>
+      <div>Print, Export , Import , Search</div>
       <table className="table">
         <thead>
           <tr>
