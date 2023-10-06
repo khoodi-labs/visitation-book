@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar';
 import Main from './Main';
+import { BrowserRouter as Router, Route, Routes,Outlet  } from 'react-router-dom';
 
 //todo: fetch items from the backend service
 function Dashboard() {
@@ -15,7 +16,7 @@ function Dashboard() {
 						<div className="row">
 							<Sidebar/>
 							<Main/>
-						
+							 
 						</div>
 					</div>
 				</div>

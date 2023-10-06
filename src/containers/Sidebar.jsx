@@ -8,10 +8,10 @@ function Sidebar(props) {
       <h1>Dashboard</h1>
       <ul>
         <li>
-          <Link to="/dashboard">Requests</Link>
+          <Link to="/dashboard/requests">Requests</Link>
         </li>
         <li>
-          <Link to="/dashboard">Visitations </Link>
+          <Link to="/dashboard/visitations">Visitations </Link>
         </li>
       </ul>
     </div>
