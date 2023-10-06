@@ -26,6 +26,32 @@ const RequestService = () => {
       ],
     },
     {
+        id: "3",
+  
+        host: {
+          id: 1,
+          firstName: "Andreas",
+          lastName: "Blasio",
+          Email: "Login Notification Message",
+        },
+        guest: {
+          id: 10,
+          firstName: "Bisaso",
+          lastName: "Bilingi",
+          Email: "Login Notification Message",
+        },
+        status: "pending",
+        dateCreated: "05,10,2023",
+        visitationDate: "05,10,2023",
+        visitationType: "Online",
+        details: [
+          {
+            link: "url",
+          },
+        ],
+      },
+
+    {
       id: "2",
 
       host: {
@@ -48,6 +74,7 @@ const RequestService = () => {
         {
           link: "url",
         },
+        
       ],
     },
   ];
