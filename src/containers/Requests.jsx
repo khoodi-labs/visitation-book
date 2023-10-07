@@ -3,6 +3,14 @@ import constants from "../components/utils/constants";
 import RequestService from "../services/RequestsService";
 import CheckboxElement from "../components/Common/CheckboxElement";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import InputElement from "../components/Common/InputElement";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock, faRightToBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import TopSleave from "../components/Common/TopSleave";
+
+ 
+
 
 function Requests() {
   //offset , limit and query used in fetching items from backedn.
@@ -58,7 +66,7 @@ function Requests() {
 
   return (
     <div>
-      <div>Print, Export , Import , Search</div>
+       <TopSleave/>
       <table className="table">
         <thead>
           <tr>

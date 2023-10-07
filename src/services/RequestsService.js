@@ -43,7 +43,7 @@ const RequestService = () => {
       status: "pending",
       dateCreated: "05,10,2023",
       visitationDate: "05,10,2023",
-      visitationType: "Online",
+      visitationType: "Physical",
       details: [
         {
           link: "url",
@@ -66,7 +66,7 @@ const RequestService = () => {
         lastName: "Kanyama",
         Email: "Login Notification Message",
       },
-      status: "pending",
+      status: "active",
       dateCreated: "05,10,2023",
       visitationDate: "05,10,2023",
       visitationType: "Online",

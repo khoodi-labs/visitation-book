@@ -9,7 +9,7 @@ function CheckboxElement(props) {
         id={id}
         type="checkbox"
         value={value}
-        onChange={handleOnChange} 
+        onChange={handleOnChange}  
         checked={isChecked} 
       />
       <span className="checkbox"></span>
