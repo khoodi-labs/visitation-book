@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import constants from "../components/utils/constants";
 import RequestService from "../services/RequestsService";
 import CheckboxElement from "../components/Common/CheckboxElement";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 function Requests() {
   //offset , limit and query used in fetching items from backedn.
@@ -10,28 +11,38 @@ function Requests() {
   const [query, setQuery] = useState("");
 
   const [selectedValues, setSelectedValues] = useState([]);
+  const [parentCheckboxChecked, setParentCheckbox] = useState(false);
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value;
     const isChecked = event.target.checked;
 
-    // Update the state based on checkbox change
-    if (isChecked) {
-      setSelectedValues([...selectedValues, value]);
-    } else {
-      setSelectedValues(selectedValues.filter((item) => item !== value));
+    isChecked
+      ? setSelectedValues([...selectedValues, value])
+      : setSelectedValues(selectedValues.filter((item) => item !== value));
+  };
+
+  const handleParentCheckboxChange = (event) => {
+    if (parentCheckboxChecked) {
+      setSelectedValues([]);
     }
+    setParentCheckbox(!parentCheckboxChecked);
   };
 
   const fetchRequests = () => {
     const data = RequestService().list(offset, limit, query);
+
     return data.map((item) => (
-      <tr key={item.id}>
+      <tr key={item.id}   >
         <td>
           <CheckboxElement
             value={item.id}
-            checked={selectedValues.includes(item.id)}
-            onChange={handleCheckboxChange}
+            isChecked={
+              !parentCheckboxChecked
+                ? selectedValues.includes(item.id)
+                : parentCheckboxChecked
+            }
+            handleOnChange={handleCheckboxChange}
           />
         </td>
         <td>{item.host.firstName + " " + item.host.lastName}</td>
@@ -52,7 +63,11 @@ function Requests() {
         <thead>
           <tr>
             <th>
-              <CheckboxElement />
+              <CheckboxElement
+                value={"parent"}
+                isChecked={parentCheckboxChecked}
+                handleOnChange={handleParentCheckboxChange}
+              />
             </th>
             <th>Host</th>
             <th>Guest</th>
