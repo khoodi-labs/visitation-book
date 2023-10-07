@@ -7,11 +7,15 @@
 
 .top-sleave input[type="text"] {
     min-width: 500px;
-    border-radius: 10px;
+   
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .top-sleave button{
     margin-left: 2px;
+    background-color: #f1f1ff; border: 1px solid #010114;
+    color: #000;
+    cursor: pointer;
 }
+ 

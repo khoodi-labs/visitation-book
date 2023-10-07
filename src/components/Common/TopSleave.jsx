@@ -6,16 +6,20 @@ import { faDownload, faUpload, faPrint, faSearch } from '@fortawesome/free-solid
 
 
 function TopSleave(props) {
+    const handleOnSubmit =(e)=>{
+        e.preventDefault();
+
+    }
   return (
     <div className="top-sleave">
       <form className="form-inline"> 
         <label>Search: </label>
         
         <input className="form-control mr-sm-2" type="text" />
-        <button className="btn btn-primary my-2 my-sm-0" type="submit">
+        <button className="btn btn-primary my-2 my-sm-0 searchbutton" type="button">
           <FontAwesomeIcon icon={faSearch}  />
         </button>
-        <button className="btn btn-primary my-2 my-sm-0" type="submit">
+        <button className="btn btn-primary my-2 my-sm-0" type="button">
           <FontAwesomeIcon icon={faDownload}  />
         </button>
         <button className="btn btn-primary my-2 my-sm-0" type="button">
