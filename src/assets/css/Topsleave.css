@@ -1,0 +1,17 @@
+.top-sleave {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    background-color: #f1f1ff; padding: 10px;
+}
+
+.top-sleave input[type="text"] {
+    min-width: 500px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.top-sleave button{
+    margin-left: 2px;
+}
