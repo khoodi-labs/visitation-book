@@ -33,7 +33,7 @@ function Requests() {
     const data = RequestService().list(offset, limit, query);
 
     return data.map((item) => (
-      <tr key={item.id}   >
+      <tr key={item.id}>
         <td>
           <CheckboxElement
             value={item.id}
