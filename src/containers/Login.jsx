@@ -27,7 +27,7 @@ function Login() {
 		e.preventDefault()
 		setAlertMsg("Processing...");
 
-		if (auth.validate(username, password) === false) {
+		if (auth.validate(username, password) === undefined) {
 			setAlertCss("alert alert-warning alert-dismissable");
 			setAlertMsg("Invalid username or password ");
 			return;
