@@ -3,6 +3,12 @@ body{
    
 }
 
+.main-container{
+  width: 96% !important;
+}
+.sidebar-container{
+  width:4% !important;
+}
 .table{
     font-size: 14px;
 

@@ -1,0 +1,13 @@
+
+.pagination-sleeve {
+    margin: auto;
+}
+.pagination-sleeve nav {
+    margin-left: 40%; 
+}
+
+ 
+.pagination-sleeve nav  li a{
+    color: #000;
+    
+}

@@ -10,7 +10,7 @@ import Requests from "./Requests";
 
 function Main(props) {
   return (
-    <div className="col-md-10">
+    <div className="main-container">
       <Outlet />
     </div>
   );
