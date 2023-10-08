@@ -1,17 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import pingu1 from "../assets/images/pingu1.png";
+import visitorRequestsImage from "../assets/images/visitor-requests.png";
+import visitorVisitations from "../assets/images/visitor-visitations.png";
+
+import "../assets/css/Sidebar.css";
 
 function Sidebar(props) {
   return (
-    <div className="col-md-2">
-      <h1>Dashboard</h1>
+    <div className=" sidebar-container  sidebar ">
+      <img src={pingu1} />
       <ul>
         <li>
-          <Link to="/dashboard/requests">Requests</Link>
+          <Link to="/dashboard/requests">
+            <img src={visitorRequestsImage} className="visitation-request-image" />
+          </Link>
         </li>
         <li>
-          <Link to="/dashboard/visitations">Visitations </Link>
+          <Link to="/dashboard/visitations">
+            <img src={visitorVisitations} />
+          </Link>
         </li>
       </ul>
     </div>

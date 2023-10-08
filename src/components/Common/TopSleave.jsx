@@ -12,7 +12,7 @@ function TopSleave(props) {
     }
   return (
     <div className="top-sleave">
-      <form className="form-inline"> 
+      <form className="form-inline" onSubmit={handleOnSubmit}> 
         <label>Search: </label>
         
         <input className="form-control mr-sm-2" type="text" />

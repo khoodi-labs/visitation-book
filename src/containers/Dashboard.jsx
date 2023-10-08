@@ -10,7 +10,7 @@ function Dashboard() {
 	return (
 		<div>
 
-			<div className="container-fluid">
+			<div  >
 				<div className="row">
 					<div className="col-md-12">
 
