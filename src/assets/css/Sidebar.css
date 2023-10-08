@@ -4,9 +4,9 @@
 
     position: relative;
     text-align: center;
-    background-color:#666666;
+    background-color: #666666;
     margin-left: -10px;
-    border-left: 0px;  
+    border-left: 0px;
 
 }
 
@@ -15,7 +15,7 @@
     margin: 0px;
     padding: 0px;
     width: 50px;
-    
+
     margin: auto;
 
 }
@@ -33,13 +33,16 @@
 .sidebar ul li img {
     width: 30px;
     height: 30px;
-    border-radius: 5px;  
+    border-radius: 5px;
 }
 
-.sidebar ul li:hover{
+.sidebar ul li:hover {
     background-color: #eee;
 }
-.list-items-image{
-    width: 30px; margin-bottom: 20px; margin-top: 20px; cursor: pointer;
+
+.list-items-image {
+    width: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }
- 
