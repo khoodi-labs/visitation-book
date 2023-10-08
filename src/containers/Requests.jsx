@@ -7,7 +7,8 @@ import InputElement from "../components/Common/InputElement";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faRightToBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
-import TopSleave from "../components/Common/TopSleave";
+import TopSleave from "../components/Common/TopSearchSleave";
+import Pagination from "../components/Common/Pagination";
 
  
 
@@ -88,6 +89,8 @@ function Requests() {
         </thead>
         <tbody>{fetchRequests()}</tbody>
       </table>
+ 
+      <Pagination />
     </div>
   );
 }

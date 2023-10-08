@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import '../../assets/css/Topsleave.css'
+import '../../assets/css/TopSearchsleave.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faUpload, faPrint, faSearch } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 
