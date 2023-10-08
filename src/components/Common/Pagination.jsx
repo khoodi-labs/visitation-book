@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Replace with the desired search icon
 
 function Pagination(props) {
+    const {linkTo} = props
   return (
     <div className="pagination-sleeve">
       <nav aria-label="Page navigation example">
@@ -19,17 +20,17 @@ function Pagination(props) {
             </Link>
           </li>
           <li className="page-item">
-            <Link className="page-link" to="#">
+            <Link className="page-link" to={linkTo}>
               1
             </Link>
           </li>
           <li className="page-item">
-            <Link className="page-link" to="#">
+            <Link className="page-link" to={linkTo}>
               2
             </Link>
           </li>
           <li className="page-item">
-            <Link className="page-link" to="#">
+            <Link className="page-link" to={linkTo}>
               3
             </Link>
           </li>
