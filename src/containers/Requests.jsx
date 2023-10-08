@@ -6,7 +6,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import InputElement from "../components/Common/InputElement";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faRightToBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import { faUser, faLock, faRightToBracket, faCircleUser ,faEdit,faTrash} from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+
 import TopSleave from "../components/Common/TopSearchSleave";
 import Pagination from "../components/Common/Pagination";
 
@@ -60,7 +61,7 @@ function Requests() {
         <td>{item.visitationType}</td>
         <td>{item.visitationDate}</td>
         <td>{item.dateCreated}</td>
-        <td> Edit | Delete</td>
+        <td> <FontAwesomeIcon icon={faEdit}  /> |  <FontAwesomeIcon icon={faTrash}  /> </td>
       </tr>
     ));
   };
