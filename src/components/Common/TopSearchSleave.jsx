@@ -3,32 +3,33 @@ import PropTypes from "prop-types";
 import '../../assets/css/TopSearchsleave.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faUpload, faPrint, faSearch } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import BasicInputElement from "./BasicInputElement";
 
 
 function TopSleave(props) {
-    const handleOnSubmit =(e)=>{
-        e.preventDefault();
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
 
-    }
+  }
   return (
     <div className="top-sleave">
-      <form className="form-inline" onSubmit={handleOnSubmit}> 
+      <form className="form-inline" onSubmit={handleOnSubmit}>
         <label>Search: </label>
-        
-        <input className="form-control mr-sm-2" type="text" />
+
+        <BasicInputElement className="form-control mr-sm-2" type="text" placeholder="input here..." />
         <button className="btn btn-primary my-2 my-sm-0 searchbutton" type="button">
-          <FontAwesomeIcon icon={faSearch}  />
+          <FontAwesomeIcon icon={faSearch} />
         </button>
         <button className="btn btn-primary my-2 my-sm-0" type="button">
-          <FontAwesomeIcon icon={faDownload}  />
+          <FontAwesomeIcon icon={faDownload} />
         </button>
         <button className="btn btn-primary my-2 my-sm-0" type="button">
-        <FontAwesomeIcon icon={faUpload}  />
+          <FontAwesomeIcon icon={faUpload} />
         </button>
         <button className="btn btn-primary my-2 my-sm-0" type="button">
-        <FontAwesomeIcon icon={faPrint}  />
+          <FontAwesomeIcon icon={faPrint} />
         </button>
-        
+
       </form>
     </div>
   );

@@ -1,85 +1,18 @@
 const RequestService = () => {
-  const data = [
-    {
-      id: "1",
+  const url = "http://localhost:9000";
+  const endpoint = "/v1/request/visit/list";
 
-      host: {
-        id: 1,
-        firstName: "Rogers",
-        lastName: "Muyinda",
-        Email: "Login Notification Message",
-      },
-      guest: {
-        id: 10,
-        firstName: "Rita",
-        lastName: "Nabirye",
-        Email: "Login Notification Message",
-      },
-      status: "pending",
-      dateCreated: "05,10,2023",
-      visitationDate: "05,10,2023",
-      visitationType: "Online",
-      details: [
-        {
-          link: "url",
-        },
-      ],
-    },
-    {
-      id: "3",
-
-      host: {
-        id: 1,
-        firstName: "Andreas",
-        lastName: "Blasio",
-        Email: "Login Notification Message",
-      },
-      guest: {
-        id: 10,
-        firstName: "Bisaso",
-        lastName: "Bilingi",
-        Email: "Login Notification Message",
-      },
-      status: "pending",
-      dateCreated: "05,10,2023",
-      visitationDate: "05,10,2023",
-      visitationType: "Physical",
-      details: [
-        {
-          link: "url",
-        },
-      ],
-    },
-
-    {
-      id: "2",
-
-      host: {
-        id: 1,
-        firstName: "Juliana",
-        lastName: "Bilogot",
-        Email: "Login Notification Message",
-      },
-      guest: {
-        id: 10,
-        firstName: "Mistil",
-        lastName: "Kanyama",
-        Email: "Login Notification Message",
-      },
-      status: "active",
-      dateCreated: "05,10,2023",
-      visitationDate: "05,10,2023",
-      visitationType: "Online",
-      details: [
-        {
-          link: "url",
-        },
-      ],
-    },
-  ];
-
-  const getList = (limit, offset, query) => {
-    return data;
+  const getList = (limit, offset, query, callback) => {
+    const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset;
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        // Set the fetched data in the state
+        callback(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
 
   const getByID = (id) => {

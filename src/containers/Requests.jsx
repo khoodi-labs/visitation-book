@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import constants from "../components/utils/constants";
 import RequestService from "../services/RequestsService";
 import CheckboxElement from "../components/Common/CheckboxElement";
@@ -6,22 +6,29 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import InputElement from "../components/Common/InputElement";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faRightToBracket, faCircleUser ,faEdit,faTrash} from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import { faUser, faLock, faRightToBracket, faCircleUser, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 
 import TopSleave from "../components/Common/TopSearchSleave";
 import Pagination from "../components/Common/Pagination";
 
- 
+
 
 
 function Requests() {
   //offset , limit and query used in fetching items from backedn.
-  const [offset, setOffset] = useState(constants.default);
-  const [limit, setLimit] = useState(constants.limit);
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(20);
   const [query, setQuery] = useState("");
 
   const [selectedValues, setSelectedValues] = useState([]);
   const [parentCheckboxChecked, setParentCheckbox] = useState(false);
+
+  const [data, setData] = useState([]); // State to store fetched data
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value;
@@ -39,10 +46,33 @@ function Requests() {
     setParentCheckbox(!parentCheckboxChecked);
   };
 
-  const fetchRequests = () => {
-    const data = RequestService().list(offset, limit, query);
+  useEffect(() => {
+    RequestService().list(20, 0, "", setData)
+  }, []);
 
-    return data.map((item) => (
+
+
+  //todo: handle previous and next pages already fetched 
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+
+
+  const populateData = (_data) => {
+    if (_data == undefined) return;
+
+    console.log(_data);
+
+    return _data.map((item) => (
       <tr key={item.id}>
         <td>
           <CheckboxElement
@@ -55,20 +85,22 @@ function Requests() {
             handleOnChange={handleCheckboxChange}
           />
         </td>
-        <td>{item.host.firstName + " " + item.host.lastName}</td>
-        <td>{item.guest.firstName + " " + item.host.lastName}</td>
+        <td>{item.host.first_name + " " + item.host.last_name}</td>
+        <td>{item.guest.first_name + " " + item.host.last_name}</td>
         <td>{item.status}</td>
         <td>{item.visitationType}</td>
-        <td>{item.visitationDate}</td>
-        <td>{item.dateCreated}</td>
-        <td> <FontAwesomeIcon icon={faEdit}  /> |  <FontAwesomeIcon icon={faTrash}  /> </td>
+        <td>{item.start_date} - {item.end_date}</td>
+        <td>{item.created_at}</td>
+        <td> <FontAwesomeIcon icon={faEdit} /> |  <FontAwesomeIcon icon={faTrash} /> </td>
       </tr>
-    ));
-  };
+    )
+
+    )
+  }
 
   return (
     <div>
-       <TopSleave/>
+      <TopSleave />
       <table className="table">
         <thead>
           <tr>
@@ -88,9 +120,14 @@ function Requests() {
             <th>Manage</th>
           </tr>
         </thead>
-        <tbody>{fetchRequests()}</tbody>
+        <tbody>
+          {
+            populateData(data)
+          }
+
+        </tbody>
       </table>
- 
+
       <Pagination />
     </div>
   );
