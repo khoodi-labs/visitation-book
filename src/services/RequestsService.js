@@ -1,11 +1,9 @@
 const RequestService = () => {
- 
   const url = "http://localhost:9000";
   const endpoint = "/v1/request/visit/list";
- 
 
   const getList = (limit, offset, query, callback) => {
-    const apiUrl = url+endpoint+"?limit="+limit+"&offset="+offset;
+    const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset;
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
