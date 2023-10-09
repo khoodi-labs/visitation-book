@@ -77,6 +77,7 @@ const RequestService = () => {
       ],
     },
   ];
+  const url = "localhost:9000/v1/request/visit/list?limit=10&offset=0";
 
   const getList = (limit, offset, query) => {
     return data;
