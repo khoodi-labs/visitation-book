@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Replace with the desired search icon
 
 function Pagination(props) {
-    const {linkTo} = props
+  const { linkTo } = props
   return (
     <div className="pagination-sleeve">
       <nav aria-label="Page navigation example">

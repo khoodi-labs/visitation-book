@@ -7,9 +7,10 @@
 
 .top-sleave input[type="text"] {
     min-width: 500px;
-   
+
     margin-left: 10px;
     margin-right: 10px;
+    background-color: #f1f1ff; color: #000;
 }
 
 .top-sleave button{

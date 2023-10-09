@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import BasicInputElement from './BasicInputElement';
 
 
 function InputElement(props) {
@@ -13,7 +14,7 @@ function InputElement(props) {
 
       </label>
       <div className="input-group">
-        <input  value={value} type={type} className={className} id={id} onChange={onChange} />
+       <BasicInputElement placeholder={placeholder}  value={value} type={type} className={className} id={id} onChange={onChange} />
       </div>
 
     </div>
