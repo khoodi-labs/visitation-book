@@ -13,7 +13,7 @@ function Sidebar(props) {
       <img src={ListITmes} className="list-items-image" />
       <ul>
         <li>
-          <Link to="/dashboard/requests">
+          <Link to="/dashboard/requests/list">
             <img
               src={visitorRequestsImage}
               className="visitation-request-image"
