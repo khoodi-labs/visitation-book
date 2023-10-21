@@ -71,3 +71,8 @@ body{
     transition: all 0.375s;
   }
  
+
+  .row-selected{
+ background-color: #1F1F1F !important;
+ color: #fff !important;
+  }

@@ -31,9 +31,10 @@ function Requests() {
 
 
   const handleCheckboxChange = (event) => {
-    const value = event.target.value;
+    let value = parseInt(event.target.value);
     const isChecked = event.target.checked;
-
+   
+   
     isChecked
       ? setSelectedValues([...selectedValues, value])
       : setSelectedValues(selectedValues.filter((item) => item !== value));
@@ -46,6 +47,7 @@ function Requests() {
     setParentCheckbox(!parentCheckboxChecked);
   };
 
+  //on every load load data and move 
   useEffect(() => {
     RequestService().list(20, 0, "", setData)
   }, []);
@@ -70,23 +72,23 @@ function Requests() {
   const populateData = (_data) => {
     if (_data == undefined) return;
 
-    console.log(_data);
+
 
     return _data.map((item) => (
-      <tr key={item.id}>
+      <tr key={item.id} className={ (selectedValues.includes(item.id) || parentCheckboxChecked) ? "row-selected" : "" }>
         <td>
           <CheckboxElement
             value={item.id}
             isChecked={
-              !parentCheckboxChecked
-                ? selectedValues.includes(item.id)
-                : parentCheckboxChecked
+              parentCheckboxChecked
+                ?  parentCheckboxChecked 
+                : selectedValues.includes(item.id)
             }
             handleOnChange={handleCheckboxChange}
           />
         </td>
         <td>{item.host.first_name + " " + item.host.last_name}</td>
-        <td>{item.guest.first_name + " " + item.host.last_name}</td>
+        <td>{item.guest.first_name + " " + item.guest.last_name}</td>
         <td>{item.status}</td>
         <td>{item.visitationType}</td>
         <td>{item.start_date} - {item.end_date}</td>
