@@ -122,8 +122,8 @@ function ListVisits() {
         <td>{item.guest.first_name + " " + item.guest.last_name}</td>
         <td>{item.status}</td>
         <td>{item.inv_type}</td>
-        <td>{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>
-        <td>{simpleDate(item.created_at)}</td>
+        <td className="date-tab" >{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>
+        <td className="date-tab" >{simpleDate(item.created_at)}</td>
         <td> <FontAwesomeIcon icon={faEdit} /> |  <FontAwesomeIcon icon={faTrash} /> </td>
       </tr>
     )
