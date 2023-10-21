@@ -1,6 +1,6 @@
 .top-sleave {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
     font-family: inherit;
     background-color: #f1f1ff; padding: 10px;
 }
@@ -20,3 +20,16 @@
     cursor: pointer;
 }
  
+
+ 
+.tabs {
+  padding: 5px; clear: both; margin-left: 5px;
+}
+.tabs   li{
+  list-style: none; float: left; height: 30px;    min-width: 100px;
+  text-align: center;
+  margin-left: 2px;
+ 
+  border-bottom: 1px   solid #b9b8b8;   cursor: pointer;
+}
+
