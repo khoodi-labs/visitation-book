@@ -2,7 +2,8 @@
     /* margin-top: 15px; */
     /* margin-bottom: 15px; */
     font-family: inherit;
-    background-color: #f1f1ff; padding: 10px;
+    background-color: #f1f1ff;
+    padding: 10px;
 }
 
 .top-sleave input[type="text"] {
@@ -10,26 +11,34 @@
 
     margin-left: 10px;
     margin-right: 10px;
-    background-color: #f1f1ff; color: #000;
+    background-color: #f1f1ff;
+    color: #000;
 }
 
-.top-sleave button{
+.top-sleave button {
     margin-left: 2px;
-    background-color: #f1f1ff; border: 1px solid #010114;
+    background-color: #f1f1ff;
+    border: 1px solid #010114;
     color: #000;
     cursor: pointer;
 }
- 
 
- 
+
+
 .tabs {
-  padding: 5px; clear: both; margin-left: 5px;
-}
-.tabs   li{
-  list-style: none; float: left; height: 30px;    min-width: 100px;
-  text-align: center;
-  margin-left: 2px;
- 
-  border-bottom: 1px   solid #b9b8b8;   cursor: pointer;
+    padding: 5px;
+    clear: both;
+    margin-left: 5px;
 }
 
+.tabs li {
+    list-style: none;
+    float: left;
+    height: 30px;
+    min-width: 100px;
+    text-align: center;
+    margin-left: 2px;
+
+    border-bottom: 1px solid #b9b8b8;
+    cursor: pointer;
+}
