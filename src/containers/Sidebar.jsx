@@ -21,7 +21,7 @@ function Sidebar(props) {
           </Link>
         </li>
         <li>
-          <Link to="/dashboard/visitations">
+          <Link to="/dashboard/visitations/list">
             <img src={visitorVisitations} />
           </Link>
         </li>

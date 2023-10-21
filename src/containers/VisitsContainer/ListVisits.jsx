@@ -17,7 +17,7 @@ import moment from "moment";
 
 
 
-function ListRequests() {
+function ListVisits() {
   //offset , limit and query used in fetching items from backedn.
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
@@ -147,4 +147,4 @@ function ListRequests() {
   );
 }
 
-export default ListRequests;
+export default ListVisits;
