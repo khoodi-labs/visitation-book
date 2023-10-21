@@ -7,6 +7,10 @@ import NoMatch from "./NoMatch";
 import Visits from "./Visits";
 import AddRequest from "./RequestsContainer/AddRequest";
 import ListRequests from "./RequestsContainer/ListRequests";
+ 
+import ListVisits from "./VisitsContainer/ListVisits";
+import AddVisit from "./VisitsContainer/AddVisit";
+
 
 function Home() {
   return (
@@ -18,7 +22,11 @@ function Home() {
             <Route path="list" element={<ListRequests />} />
             <Route path="add" element={<AddRequest />} />
           </Route>
-          <Route path="visitations" element={<Visits />} />
+          <Route path="visitations" Component={Visits} >
+           <Route path="list" element={<ListVisits />} />
+            <Route path="add" element={<AddVisit />} />
+
+            </Route>
           {/* <Route path="*" element={<NoMatch />} /> */}
         </Route>
         {/* <Route path="*" element={<NoMatch />} /> */}

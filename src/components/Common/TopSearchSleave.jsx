@@ -40,6 +40,9 @@ function TopSleave(props) {
           <FontAwesomeIcon icon={faPrint} />
         </button>
 
+<div className="count-summary">
+  123 of 233 Records 
+</div>
       </form>
     </div>
   );

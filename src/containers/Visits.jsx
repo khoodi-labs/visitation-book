@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import PageHeader from "../components/Common/PageHeader";
+
+
 import PropTypes from 'prop-types'
 
 function Visits(props) {
   return (
-    <div>Visits</div>
+    <div>
+      <PageHeader title="visitations" />
+      <Outlet />
+    </div>
   )
 }
 

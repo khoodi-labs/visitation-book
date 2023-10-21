@@ -100,3 +100,7 @@ body {
   top: 0;
   z-index: 1;
 }
+
+.date-tab{
+  text-align: right !important;
+}

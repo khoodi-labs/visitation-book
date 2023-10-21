@@ -17,7 +17,7 @@ import moment from "moment";
 
 
 
-function ListRequests() {
+function ListVisits() {
   //offset , limit and query used in fetching items from backedn.
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
@@ -55,6 +55,7 @@ function ListRequests() {
 
     return moment(str).format("MM/D/YY");
   }
+
 
 
   const handleRowClick = (id) => {
@@ -122,7 +123,7 @@ function ListRequests() {
         <td>{item.status}</td>
         <td>{item.inv_type}</td>
         <td className="date-tab" >{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>
-        <td className="date-tab">{simpleDate(item.created_at)}</td>
+        <td className="date-tab" >{simpleDate(item.created_at)}</td>
         <td> <FontAwesomeIcon icon={faEdit} /> |  <FontAwesomeIcon icon={faTrash} /> </td>
       </tr>
     )
@@ -168,4 +169,4 @@ function ListRequests() {
   );
 }
 
-export default ListRequests;
+export default ListVisits;

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import visitorRequestsImage from "../assets/images/visitor-requests.png";
 import visitorVisitations from "../assets/images/visitor-visitations.png";
 import ListITmes from "../assets/images/listiems.png";
@@ -21,7 +21,7 @@ function Sidebar(props) {
           </Link>
         </li>
         <li>
-          <Link to="/dashboard/visitations">
+          <Link to="/dashboard/visitations/list">
             <img src={visitorVisitations} />
           </Link>
         </li>
