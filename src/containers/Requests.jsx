@@ -29,12 +29,18 @@ function Requests() {
   const [totalPages, setTotalPages] = useState(1);
 
 
+  const handleRowClick = (id) => {
+    selectedValues.find((x) => x === id) ?
+      setSelectedValues(selectedValues.filter((item) => item !== id))
+      :
+      setSelectedValues([...selectedValues, id])
+  }
 
   const handleCheckboxChange = (event) => {
     let value = parseInt(event.target.value);
     const isChecked = event.target.checked;
-   
-   
+
+
     isChecked
       ? setSelectedValues([...selectedValues, value])
       : setSelectedValues(selectedValues.filter((item) => item !== value));
@@ -75,13 +81,13 @@ function Requests() {
 
 
     return _data.map((item) => (
-      <tr key={item.id} className={ (selectedValues.includes(item.id) || parentCheckboxChecked) ? "row-selected" : "" }>
+      <tr key={item.id} value={item.id} onClick={() => handleRowClick(item.id)} className={(selectedValues.includes(item.id) || parentCheckboxChecked) ? "row-selected" : ""}>
         <td>
           <CheckboxElement
             value={item.id}
             isChecked={
               parentCheckboxChecked
-                ?  parentCheckboxChecked 
+                ? parentCheckboxChecked
                 : selectedValues.includes(item.id)
             }
             handleOnChange={handleCheckboxChange}
