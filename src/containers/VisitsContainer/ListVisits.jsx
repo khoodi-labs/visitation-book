@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import constants from "../../components/utils/constants";
 import RequestService from "../../services/RequestsService";
 import CheckboxElement from "../../components/Common/CheckboxElement";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import InputElement from "../../components/Common/InputElement";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faRightToBracket, faCircleUser, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 
 import TopSleave from "../../components/Common/TopSearchSleave";
 import Pagination from "../../components/Common/Pagination";
-import { Outlet } from "react-router-dom";
 
 
 import { simpleDate, manageDates } from '../../components/utils/DateFormatter'
