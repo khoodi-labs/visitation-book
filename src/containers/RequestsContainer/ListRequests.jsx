@@ -12,9 +12,7 @@ import TopSleave from "../../components/Common/TopSearchSleave";
 import Pagination from "../../components/Common/Pagination";
 import { Outlet } from "react-router-dom";
 
-
-import moment from "moment";
-
+import { simpleDate, manageDates } from '../../components/utils/DateFormatter'
 
 
 function ListRequests() {
@@ -32,29 +30,7 @@ function ListRequests() {
   const [totalPages, setTotalPages] = useState(1);
 
 
-  const simpleDate =(str)=> moment(str).format("MM/D/YY");
 
-  const manageDates = (str) => {
-
-    if (str === null) return "  ";
-
-    const parse = Date.parse(str);
-    let date = new Date(parse);
-    let year = date.getFullYear();
-
-    let currentDate =  new Date();
-    let currentYear = currentDate.getFullYear();
-
-    if (year.toString() === 'NaN') {
-      return "- ";
-    }
-
-    if (year === currentYear) {
-      return moment(str).format("MMM Do");
-    }
-
-    return moment(str).format("MM/D/YY");
-  }
 
 
   const handleRowClick = (id) => {
