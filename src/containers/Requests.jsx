@@ -109,7 +109,7 @@ function Requests() {
   return (
     <div>
       <TopSleave />
-      <table className="table">
+      <table className="table tableFixHead">
         <thead>
           <tr>
             <th>
@@ -128,10 +128,13 @@ function Requests() {
             <th>Manage</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
+
           {
             populateData(data)
+            
           }
+            
 
         </tbody>
       </table>

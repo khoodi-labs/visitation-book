@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import '../../assets/css/TopSearchsleave.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faUpload, faPrint, faSearch, faPlus } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import { faDownload, faUpload, faPrint, faSearch, faPlus ,faList} from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 import BasicInputElement from "./BasicInputElement";
 
 
@@ -16,8 +16,8 @@ function TopSleave(props) {
 
       <div className=" row" >
         <ul className="tabs" >
-          <li>view </li>
-          <li>add </li>
+          <li className="active"> <FontAwesomeIcon icon={faList} /> view </li>
+          <li>   <FontAwesomeIcon icon={faPlus} /> add </li>
         </ul>
       </div>
 

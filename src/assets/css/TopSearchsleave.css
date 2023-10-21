@@ -2,7 +2,7 @@
     /* margin-top: 15px; */
     /* margin-bottom: 15px; */
     font-family: inherit;
-    background-color: #f1f1ff;
+    background-color: white;
     padding: 10px;
 }
 
@@ -17,7 +17,7 @@
 
 .top-sleave button {
     margin-left: 2px;
-    background-color: #f1f1ff;
+    background-color: white;
     border: 1px solid #010114;
     color: #000;
     cursor: pointer;
@@ -26,19 +26,36 @@
 
 
 .tabs {
-    padding: 5px;
+    background-color: white;
+    
     clear: both;
-    margin-left: 5px;
+    
+   width: 100%;
+   margin-top: 0px;
+   border-bottom:  1px solid #010114;
+   
 }
 
 .tabs li {
     list-style: none;
     float: left;
-    height: 30px;
-    min-width: 100px;
+    height: 40px;
+ 
     text-align: center;
-    margin-left: 2px;
-
-    border-bottom: 1px solid #b9b8b8;
-    cursor: pointer;
+  
+ color: #000;
+    cursor: pointer;  padding: 10px; 
+    border-top: 2px solid #f1f1ff; text-transform: uppercase;
+    font-size: 12px;
+   
 }
+
+.tabs .active {
+    border-top:1px solid  #010114;
+    border-left:1px solid  #010114;
+    border-right:1px solid  #010114;
+    border-bottom:1px solid  #f1f1f1 !important;
+
+}
+
+ 
