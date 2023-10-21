@@ -22,12 +22,15 @@
 
 .sidebar ul li {
     margin: 0px;
-    padding: 0px;
-    border-radius: 5px;
+    padding: 2px;
     background-color: #fff;
-    width: 30px;
-    margin: auto;
-    margin-bottom: 20px;
+    height: 40px;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    border-radius: 5px 0px 0px 5px;
+
+
+
 }
 
 .sidebar ul li img {
