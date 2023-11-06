@@ -93,8 +93,8 @@ function ListRequests() {
             handleOnChange={handleCheckboxChange}
           />
         </td>
-        <td>{item.host.first_name + " " + item.host.last_name}</td>
-        <td>{item.guest.first_name + " " + item.guest.last_name}</td>
+        <td>{item.host.first_name + " " + item.host.other_names}</td>
+        <td>{item.guest.first_name + " " + item.guest.other_names}</td>
         <td>{item.status}</td>
         <td>{item.inv_type}</td>
         <td className="date-tab" >{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>

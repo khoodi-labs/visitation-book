@@ -22,21 +22,21 @@ function Sidebar(props) {
             </div>
             <ul>
                 <li>
-                    <Link to="/dashboard/requests/list">
-                        {expanded ? <span>  <FontAwesomeIcon icon={faCogs} /> Dashboard</span> : <span>  <FontAwesomeIcon icon={faDashboard} />   </span>}
+                    <Link to="/dashboard/overview">
+                        {expanded ? <span>  <FontAwesomeIcon icon={faCogs} /> Dashboard</span> : <span>  <FontAwesomeIcon icon={faCogs} />   </span>}
 
                     </Link>
                 </li>
 
                 <li>
                     <Link to="/dashboard/requests/list">
-                        {expanded ? <span>  <FontAwesomeIcon icon={faUsers} /> Requests</span> : <span>  <FontAwesomeIcon icon={faDashboard} />   </span>}
+                        {expanded ? <span>  <FontAwesomeIcon icon={faUsers} /> Requests</span> : <span>  <FontAwesomeIcon icon={faUsers} />   </span>}
 
                     </Link>
                 </li>
                 <li>
                     <Link to="/dashboard/visitations/list">
-                        {expanded ? <span>  <FontAwesomeIcon icon={faBookOpen} /> Invitations</span> : <span>  <FontAwesomeIcon icon={faDashboard} />   </span>}
+                        {expanded ? <span>  <FontAwesomeIcon icon={faBookOpen} /> Visitations</span> : <span>  <FontAwesomeIcon icon={faBookOpen} />   </span>}
 
                     </Link>
                 </li>

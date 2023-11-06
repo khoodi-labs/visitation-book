@@ -10,6 +10,7 @@ import ListRequests from "./RequestsContainer/ListRequests";
  
 import ListVisits from "./VisitsContainer/ListVisits";
 import AddVisit from "./VisitsContainer/AddVisit";
+import Overview from "./Overview";
 
 
 function Home() {
@@ -25,10 +26,13 @@ function Home() {
           <Route path="visitations" Component={Visits} >
            <Route path="list" element={<ListVisits />} />
             <Route path="add" element={<AddVisit />} />
-
             </Route>
-          {/* <Route path="*" element={<NoMatch />} /> */}
+            <Route path="overview" Component={Overview}  />
         </Route>
+      
+           
+    
+
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
 
