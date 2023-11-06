@@ -4,6 +4,7 @@ import '../../assets/css/TopSearchsleave.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faUpload, faPrint, faSearch, faPlus ,faList} from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 import BasicInputElement from "./BasicInputElement";
+import { Link } from "react-router-dom";
 
 
 function TopSleave(props) {
@@ -16,8 +17,8 @@ function TopSleave(props) {
 
       <div className=" row" >
         <ul className="tabs" >
-          <li className="active"> <FontAwesomeIcon icon={faList} /> view </li>
-          <li>   <FontAwesomeIcon icon={faPlus} /> add </li>
+          <li className={props.active_tab === "list"?"active" :"" }> <Link to={props.list_url} >  <FontAwesomeIcon icon={faList} /> view </Link> </li>
+          <li className={props.active_tab === "add"?"active" :"" }> <Link to={props.add_url} > <FontAwesomeIcon icon={faPlus} /> add </Link>  </li>
         </ul>
       </div>
 
