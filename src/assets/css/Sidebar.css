@@ -1,51 +1,28 @@
+/* Sidebar.css */
 .sidebar {
-    margin: 0px;
-    min-height: 700px;
-
-    position: relative;
-    text-align: center;
-    background-color: #666666;
-    margin-left: -10px;
-    border-left: 0px;
-
-}
-
-.sidebar ul {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: width 0.3s;
+    overflow: hidden;
+  }
+  
+  .collapsed {
     width: 50px;
-
-    margin: auto;
-
-}
-
-.sidebar ul li {
-    margin: 0px;
-    padding: 2px;
-    background-color: #fff;
-    height: 40px;
-    margin-bottom: 8px;
-    margin-left: 5px;
-    border-radius: 5px 0px 0px 5px;
-
-
-
-}
-
-.sidebar ul li img {
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-}
-
-.sidebar ul li:hover {
-    background-color: #eee;
-}
-
-.list-items-image {
-    width: 30px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    /* overflow: hidden; */
+  }
+  
+  .toggle-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer;
-}
+    font-size: 16px;
+  }
+  
+  .toggle-button:hover {
+    background-color: #444;
+  }
+  
