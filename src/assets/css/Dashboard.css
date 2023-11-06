@@ -2,7 +2,10 @@ body {
   font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 
 }
-
+.Dashboard
+{
+  background-color: #fff;
+}
 .main-container {
   width: 96% !important;
 }
