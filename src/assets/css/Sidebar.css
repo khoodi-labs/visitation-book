@@ -5,7 +5,8 @@
     background-color: #333;
     color: white;
     transition: width 0.3s;
-    overflow: hidden;
+    overflow: hidden; position: relative;
+    margin-left: 0;
   }
   
   .collapsed {
@@ -14,12 +15,12 @@
   }
   
   .toggle-button {
-    background-color: #333;
-    color: white;
+   
+    color: #fff !important;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 16px; min-height: 42px;
   }
   
   .toggle-button:hover {

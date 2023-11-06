@@ -7,7 +7,7 @@ import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 //todo: fetch items from the backend service
 function Dashboard() {
 
-	return <div className="App">
+	return <div className="Dashboard">
 		<Sidebar /> 
 		<Main />
 	</div>

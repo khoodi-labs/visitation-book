@@ -1,27 +1,48 @@
-import React,{useState} from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "../assets/css/Sidebar.css";
+import { faExpand, faMinimize, faDashboard, faCircleUser, faMaximize } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 function Sidebar(props) {
 
     const [expanded, setExpanded] = useState(true);
 
     const toggleSidebar = () => {
-      setExpanded(!expanded);
+        setExpanded(!expanded);
     };
 
 
-  return (
-    <div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`}>
-    <button className="toggle-button" onClick={toggleSidebar}>
-      {expanded ? 'Collapse' : 'Expand'}
-    </button>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-  </div>
-  )
+    return (
+        <div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`}>
+            <div className="toggle-button" onClick={toggleSidebar}>
+                {expanded ? <span>  <FontAwesomeIcon icon={faMinimize} /> Minimize</span> : <span>  <FontAwesomeIcon icon={faExpand} />   </span>}
+            </div>
+            <ul>
+                <li>
+                    <Link to="/dashboard/requests/list">
+                        {expanded ? <span>  <FontAwesomeIcon icon={faDashboard} /> Dashboard</span> : <span>  <FontAwesomeIcon icon={faDashboard} />   </span>}
+
+                    </Link>
+                </li>
+
+                <li>
+                    <Link to="/dashboard/requests/list">
+                        {expanded ? <span>  <FontAwesomeIcon icon={faDashboard} /> Requests</span> : <span>  <FontAwesomeIcon icon={faDashboard} />   </span>}
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/dashboard/visitations/list">
+                        {expanded ? <span>  <FontAwesomeIcon icon={faDashboard} /> Invitations</span> : <span>  <FontAwesomeIcon icon={faDashboard} />   </span>}
+
+                    </Link>
+                </li>
+            </ul>
+        </div>
+    )
 }
 
 Sidebar.propTypes = {}
