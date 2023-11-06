@@ -120,5 +120,10 @@ body {
   flex-grow: 0;
   padding: 20px;
 }
+.hide{
+  display: none;
+}
 
+ 
 
+ 
