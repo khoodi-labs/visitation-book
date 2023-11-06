@@ -2,7 +2,10 @@ body {
   font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 
 }
-
+.Dashboard
+{
+  background-color: #fff;
+}
 .main-container {
   width: 96% !important;
 }
@@ -104,3 +107,23 @@ body {
 .date-tab{
   text-align: right !important;
 }
+
+
+/* App.css */
+.Dashboard {
+  display: flex;
+  height: 100vh;
+  width: 100%;  
+}
+
+.content {
+  flex-grow: 0;
+  padding: 20px;
+}
+.hide{
+  display: none;
+}
+
+ 
+
+ 

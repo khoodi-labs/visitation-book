@@ -13,6 +13,7 @@ import Pagination from "../../components/Common/Pagination";
 import { Outlet } from "react-router-dom";
 
 import { simpleDate, manageDates } from '../../components/utils/DateFormatter'
+import AlertElement from "../../components/Common/AlertElement";
 
 
 function ListRequests() {
@@ -29,6 +30,8 @@ function ListRequests() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+
+  const [alertSet, showAlert] = useState(false);
 
 
 
@@ -59,7 +62,11 @@ function ListRequests() {
 
   //on every load load data and move 
   useEffect(() => {
-    RequestService().list(20, 0, "", setData)
+    showAlert(true);
+    RequestService().list(20, 0, "", (data) => {
+      showAlert(false);
+      setData(data)
+    })
   }, []);
 
 
@@ -93,8 +100,8 @@ function ListRequests() {
             handleOnChange={handleCheckboxChange}
           />
         </td>
-        <td>{item.host.first_name + " " + item.host.last_name}</td>
-        <td>{item.guest.first_name + " " + item.guest.last_name}</td>
+        <td>{item.host.first_name + " " + item.host.other_names}</td>
+        <td>{item.guest.first_name + " " + item.guest.other_names}</td>
         <td>{item.status}</td>
         <td>{item.inv_type}</td>
         <td className="date-tab" >{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>
@@ -108,6 +115,7 @@ function ListRequests() {
 
   return (
     <div>
+      <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
       <TopSleave />
       <table className="table tableFixHead">
         <thead>

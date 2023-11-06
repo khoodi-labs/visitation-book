@@ -10,7 +10,7 @@ import Requests from "./Requests";
 
 function Main(props) {
   return (
-    <div className="main-container">
+    <div className="main-container content">
       <Outlet />
     </div>
   );

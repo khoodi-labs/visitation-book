@@ -9,7 +9,7 @@ function Requests() {
  
   return (
     <div>
-      	<PageHeader title="invitations"  />
+      	<PageHeader title="REQUESTS"  />
       <Outlet />
     </div>
   );
