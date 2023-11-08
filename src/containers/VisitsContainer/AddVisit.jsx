@@ -7,9 +7,20 @@ import SelectElement from "../../components/Common/SelectElement";
 import DateTimePicker from "react-datetime-picker";
 
 
-function AddVisit(props) {
-  const [alertSet, showAlert] = useState(false);
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 
+
+
+function AddVisit(props) {
+ 
+
+  const [alertSet, showAlert] = useState(false);
+  const [timeInDate, changeTimeIn] = useState(new Date());
+
+  const [timeOutDate, changeTimeOut] = useState(timeInDate);
+  
   return (
     <div>
       <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
@@ -84,18 +95,17 @@ function AddVisit(props) {
                   <label for="exampleInputPassword1">
                     Time In
                   </label>
-                  <input type="text" className="form-control" id="exampleInputPassword1" />
+                  <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
                 </div>
 
                 <div className="form-group col-md-6">
 
                   <label for="exampleInputPassword1">
-                    Time In
+                  TimeOut
                   </label>
-                  <DateTimePicker
-                    label="Uncontrolled picker"
+                  <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
                   
-                  />
+                  
                 </div>
 
               </fieldset>
