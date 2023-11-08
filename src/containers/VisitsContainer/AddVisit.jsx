@@ -4,6 +4,7 @@ import AlertElement from '../../components/Common/AlertElement'
 import TopSleave from '../../components/Common/TopSearchSleave'
 import TabsElement from "../../components/Common/TabsElement";
 import SelectElement from "../../components/Common/SelectElement";
+import DateTimePicker from "react-datetime-picker";
 
 
 function AddVisit(props) {
@@ -42,7 +43,7 @@ function AddVisit(props) {
                 <div className="form-group col-md-12">
 
                   <label for="first_name">
-                   Where you come from 
+                    Address :
                   </label>
                   <input type="text" className="form-control" id="other_names" />
                 </div>
@@ -91,7 +92,10 @@ function AddVisit(props) {
                   <label for="exampleInputPassword1">
                     Time In
                   </label>
-                  <input type="text" className="form-control" id="exampleInputPassword1" />
+                  <DateTimePicker
+                    label="Uncontrolled picker"
+                  
+                  />
                 </div>
 
               </fieldset>
