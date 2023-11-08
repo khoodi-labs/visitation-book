@@ -30,7 +30,7 @@ function AddVisit(props) {
       <div className="container-fluid main-wrapper">
         <div className="row">
           <div className="col-md-12">
-            <form role="form">
+            <form role="form" method="POST">
 
               <fieldset className="row">
                 <legend>Personal Information:</legend>
@@ -56,7 +56,7 @@ function AddVisit(props) {
                   <label for="first_name">
                     Address :
                   </label>
-                  <input type="text" className="form-control" id="other_names" />
+                  <input autocomplete="home street-address" type="text" className="form-control" id="other_names" />
                 </div>
               </fieldset> <br />
               <fieldset className="row">
@@ -93,7 +93,7 @@ function AddVisit(props) {
                 <div className="form-group col-md-6">
 
                   <label for="exampleInputPassword1">
-                    Time In
+                    Time In : &nbsp;
                   </label>
                   <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
                 </div>
@@ -101,7 +101,7 @@ function AddVisit(props) {
                 <div className="form-group col-md-6">
 
                   <label for="exampleInputPassword1">
-                  TimeOut
+                  TimeOut : &nbsp;
                   </label>
                   <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
                   
