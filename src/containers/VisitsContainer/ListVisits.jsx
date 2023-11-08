@@ -116,7 +116,7 @@ function ListVisits() {
   return (
     <div>
       <AlertElement cssClass={alertSet===true? "alert alert-info alert-dismissable": "hide"}  msgtype="info"  msgDetail ="Processing..." />
-      <TopSleave />
+      <TopSleave active_tab="list" list_url="/dashboard/visitations/list" add_url="/dashboard/visitations/add" />
       <table className="table tableFixHead">
         <thead>
           <tr>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import "../assets/css/Sidebar.css";
-import { faExpand, faMinimize, faDashboard, faCircleUser, faMaximize, faUsers, faBookOpen, faCogs } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
+import { faExpand, faMinimize, faDashboard, faCircleUser, faMaximize, faUsers, faBookOpen, faCogs, faHeadSideCough, faHeader, faPerson } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -34,12 +34,21 @@ function Sidebar(props) {
 
                     </Link>
                 </li>
-                <li>
+                <li onClick={()=>Location.}>
                     <Link to="/dashboard/visitations/list">
                         {expanded ? <span>  <FontAwesomeIcon icon={faBookOpen} /> Visitations</span> : <span>  <FontAwesomeIcon icon={faBookOpen} />   </span>}
 
                     </Link>
                 </li>
+
+             
+                    <Link to="/dashboard/profiles/list">   <li>
+                        {expanded ? <span>  <FontAwesomeIcon icon={faPerson} /> Profiles</span> : <span>  <FontAwesomeIcon icon={faBookOpen} />   </span>}
+                        </li>
+                    </Link>
+                
+
+
             </ul>
         </div>
     )
