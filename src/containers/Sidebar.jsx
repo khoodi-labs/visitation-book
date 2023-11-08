@@ -34,19 +34,19 @@ function Sidebar(props) {
 
                     </Link>
                 </li>
-                <li>
+                <li onClick={()=>Location.}>
                     <Link to="/dashboard/visitations/list">
                         {expanded ? <span>  <FontAwesomeIcon icon={faBookOpen} /> Visitations</span> : <span>  <FontAwesomeIcon icon={faBookOpen} />   </span>}
 
                     </Link>
                 </li>
 
-                <li>
-                    <Link to="/dashboard/profiles/list">
+             
+                    <Link to="/dashboard/profiles/list">   <li>
                         {expanded ? <span>  <FontAwesomeIcon icon={faPerson} /> Profiles</span> : <span>  <FontAwesomeIcon icon={faBookOpen} />   </span>}
-
+                        </li>
                     </Link>
-                </li>
+                
 
 
             </ul>
