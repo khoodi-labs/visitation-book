@@ -20,7 +20,7 @@ function AddRequest(props) {
 
   const [timeOutDate, changeTimeOut] = useState(timeInDate);
 
- 
+
 
 
 
@@ -31,7 +31,7 @@ function AddRequest(props) {
   ]
 
   const fillDepartmentData = (data) => {
-    return  data != undefined &&  data != null && data.length > 0 ?
+    return data != undefined && data != null && data.length > 0 ?
 
       <div className="form-group col-md-4">
 
@@ -44,7 +44,7 @@ function AddRequest(props) {
   }
 
   const fillOfficeData = (data) => {
-    return  data != undefined &&  data != null && data.length > 0  ?
+    return data != undefined && data != null && data.length > 0 ?
 
       <div className="form-group col-md-4">
 
@@ -58,7 +58,7 @@ function AddRequest(props) {
 
 
   const fillHostData = (data) => {
-    return   data != undefined &&  data != null && data.length > 0  ?
+    return data != undefined && data != null && data.length > 0 ?
 
       <div className="form-group col-md-4">
 
@@ -117,7 +117,7 @@ function AddRequest(props) {
                 {fillDepartmentData()}
                 {fillOfficeData()}
                 {fillHostData()}
- 
+
 
               </fieldset>
               <br />

@@ -1,13 +1,14 @@
+import { BASE_URL } from "./Utils";
+
 const RequestService = () => {
-  const url = "http://localhost:9000";
+  const url = BASE_URL;
   const endpoint = "/v1/request/visit/list";
 
   const getList = (limit, offset, query, callback) => {
     const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset;
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => {
-        // Set the fetched data in the state
+      .then((data) => { 
         callback(data);
       })
       .catch((error) => {
