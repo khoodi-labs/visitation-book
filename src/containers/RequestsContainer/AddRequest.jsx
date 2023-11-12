@@ -35,15 +35,14 @@ function AddRequest(props) {
   const [otherNames, setOtherNames] = useState("");
   const [address, setAddress] = useState("");
 
- 
+
+  const handleValidateProfile = (event) =>{
+    event.preventDefault();
+    alert("handle validate profile")
+  }
 
   const handleSubmit = (event) => {
-
-
-    //odo: handle guest profile .. 
-
-    //todo: submit the request at once.. 
-
+  
     event.preventDefault();
     const formData = {
       host_id: 17,
@@ -170,7 +169,7 @@ function AddRequest(props) {
                     <label for="first_name">
                       First Name
                     </label>
-                    <input type="text" value={firstName}  onChange={setFirstName} className="form-control" id="first_name" required />
+                    <input type="text" value={firstName} onChange={setFirstName} className="form-control" id="first_name" required />
                   </div>
 
                   <div className="form-group col-md-6">
@@ -178,7 +177,7 @@ function AddRequest(props) {
                     <label for="first_name">
                       Other Names
                     </label>
-                    <input type="text"  value={otherNames}  onChange={setOtherNames} className="form-control" id="other_names" required />
+                    <input type="text" value={otherNames} onChange={setOtherNames} className="form-control" id="other_names" required />
                   </div>
 
                   <div className="form-group col-md-12">
@@ -186,8 +185,20 @@ function AddRequest(props) {
                     <label for="address">
                       Address :
                     </label>
-                    <input  value={address}  onChange={setAddress}  autocomplete="home street-address" type="text" className="form-control" id="address" required />
+                    <input value={address} onChange={setAddress} autocomplete="home street-address" type="text" className="form-control" id="address" required />
                   </div>
+
+                  <div className="form-group col-md-12">
+
+
+                    <button type="button" className="btn btn-primary" onClick={handleValidateProfile}  >
+                      Validate
+                    </button>
+
+                  </div>
+
+
+
                 </fieldset> <br />
                 <fieldset className="row">
                   <legend>Host Information:</legend>
@@ -223,7 +234,7 @@ function AddRequest(props) {
                 </fieldset>
 
 
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}  >
+                <button type="button" className="btn btn-primary" onClick={handleSubmit}  >
                   Submit
                 </button>
               </form>
