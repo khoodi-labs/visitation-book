@@ -5,7 +5,7 @@ import PageHeader from '../components/Common/PageHeader'
 function Overview(props) {
   return (
     <div>
-    <PageHeader title="OVERVIEW"  />
+    <PageHeader title="Overview"  />
 Welcome to version 1.0.0 Book Keeping system 
 </div>
   )

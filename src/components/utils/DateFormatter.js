@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const simpleDate = (str) => moment(str).format("MM/D/YY");
+export const simpleDate = (str) => moment(str).format("DD-MM-YYYY");
 
 export const manageDates = (str) => {
   if (str === null) return "  ";
@@ -20,5 +20,5 @@ export const manageDates = (str) => {
     return moment(str).format("MMM Do");
   }
 
-  return moment(str).format("MM/D/YY");
+  return moment(str).format("DD-MM-YYYY");
 };
