@@ -93,7 +93,7 @@ function ListRequests() {
     let count = 0;
 
     return _data.map((item) => (
-     
+
       <tr key={item.id} value={item.id} onClick={() => handleRowClick(item.id)} className={(selectedValues.includes(item.id) || parentCheckboxChecked) ? "row-selected" : ""}>
         <td>
           <CheckboxElement
@@ -101,11 +101,11 @@ function ListRequests() {
             isChecked={parentCheckboxChecked ? parentCheckboxChecked : selectedValues.includes(item.id)}
             handleOnChange={handleCheckboxChange}
           />
-         
+
         </td>
         <td> {
-            count = count +1
-          }</td>
+          count = count + 1
+        }</td>
         <td>{item.host.first_name + " " + item.host.other_names}</td>
         <td>{item.guest.first_name + " " + item.guest.other_names}</td>
         <td>{item.status}</td>
@@ -122,40 +122,40 @@ function ListRequests() {
   return (
     <div>
       <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
-      <TopSleave  active_tab="list" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add"  />
-    
-    <div className="table_view tableFixHead">
+      <TopSleave active_tab="list" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
 
-   
-      <table className="table tableFixHead">
-        <thead>
-          <tr>
-            <th colSpan={2}>
-              <CheckboxElement
-                value={"parent"}
-                isChecked={parentCheckboxChecked}
-                handleOnChange={handleParentCheckboxChange}
-              />
-            </th>
-            <th>Host</th>
-            <th>Guest</th>
-            <th>Status</th>
-            <th>Visit Type</th>
-            <th>Visit Date</th>
-            <th>Date Created</th>
-            <th>Manage</th>
-          </tr>
-        </thead>
-        <tbody >
-
-          {
-            populateData(data)
-
-          }
+      <div className="table_view tableFixHead">
 
 
-        </tbody>
-      </table>
+        <table className="table tableFixHead">
+          <thead>
+            <tr>
+              <th colSpan={2}>
+                <CheckboxElement
+                  value={"parent"}
+                  isChecked={parentCheckboxChecked}
+                  handleOnChange={handleParentCheckboxChange}
+                />
+              </th>
+              <th>Host</th>
+              <th>Guest</th>
+              <th>Status</th>
+              <th>Visit Type</th>
+              <th>Visit Date</th>
+              <th>Date Created</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody >
+
+            {
+              populateData(data)
+
+            }
+
+
+          </tbody>
+        </table>
       </div>
       <Pagination />
     </div>
