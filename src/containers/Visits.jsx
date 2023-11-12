@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 function Visits(props) {
   return (
     <div>
-      <PageHeader title="VISITATIONS" />
+      <PageHeader title="Visitations" />
       <Outlet />
     </div>
   )

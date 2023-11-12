@@ -21,11 +21,47 @@ function AddRequest(props) {
 
   const [timeOutDate, changeTimeOut] = useState(timeInDate);
 
-  
+
   const [hostData, setHostData] = useState([]);
 
   const [officeData, setOfficeData] = useState([]);
   const [departmentData, setDepartmentData] = useState([]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = {
+      host_id: 17,
+      guest_id: 19,
+      office_id: 1,
+      department_id: 2,
+      time_in: "2023-10-03",
+      time_out: "2023-10-03",
+      inv_type: "ONLINE"
+    };
+
+
+    // Submit the form data to a backend server
+    fetch("http://localhost:9000/v1/request/visit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the backend server
+        console.log(data);
+      })
+      .catch((error) => {
+        // Handle the error
+        console.log(error);
+      });
+
+
+    alert("testing");
+  }
+
 
 
   //on every load load data and move 
@@ -55,7 +91,7 @@ function AddRequest(props) {
 
 
 
- 
+
 
   const fillDepartmentData = () => {
     return departmentData != undefined && departmentData != null && departmentData.length > 0 ?
@@ -98,90 +134,91 @@ function AddRequest(props) {
   }
 
 
-
   return (
-    <div>
-      <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
-      <TabsElement active_tab="add" list_url="/dashboard/visitations/list" add_url="/dashboard/visitations/add" />
+    <form onSubmit={() => { alert("blessed") }}>
+      <div>
+        <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
+        <TabsElement active_tab="add" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
 
 
-      <div className="container-fluid main-wrapper">
-        <div className="row">
-          <div className="col-md-12">
-            <form role="form" method="POST">
+        <div className="container-fluid main-wrapper">
+          <div className="row">
+            <div className="col-md-12">
+              <form role="form" method="POST">
 
-              <fieldset className="row">
-                <legend>Personal Information:</legend>
+                <fieldset className="row">
+                  <legend>Personal Information:</legend>
 
-                <div className="form-group col-md-6">
+                  <div className="form-group col-md-6">
 
-                  <label for="first_name">
-                    First Name
-                  </label>
-                  <input type="text" className="form-control" id="first_name" required />
-                </div>
+                    <label for="first_name">
+                      First Name
+                    </label>
+                    <input type="text" className="form-control" id="first_name" required />
+                  </div>
 
-                <div className="form-group col-md-6">
+                  <div className="form-group col-md-6">
 
-                  <label for="first_name">
-                    Other Names
-                  </label>
-                  <input type="text" className="form-control" id="other_names" required />
-                </div>
+                    <label for="first_name">
+                      Other Names
+                    </label>
+                    <input type="text" className="form-control" id="other_names" required />
+                  </div>
 
-                <div className="form-group col-md-12">
+                  <div className="form-group col-md-12">
 
-                  <label for="address">
-                    Address :
-                  </label>
-                  <input autocomplete="home street-address" type="text" className="form-control" id="address" required />
-                </div>
-              </fieldset> <br />
-              <fieldset className="row">
-                <legend>Host Information:</legend>
-
-
-                {fillDepartmentData()}
-                {fillOfficeData()}
-                {fillHostData()}
+                    <label for="address">
+                      Address :
+                    </label>
+                    <input autocomplete="home street-address" type="text" className="form-control" id="address" required />
+                  </div>
+                </fieldset> <br />
+                <fieldset className="row">
+                  <legend>Host Information:</legend>
 
 
-              </fieldset>
-              <br />
-              <fieldset className="row">
-                <legend>Time Information:</legend>
-                <div className="form-group col-md-6">
-
-                  <label for="exampleInputPassword1">
-                    Time In : &nbsp;
-                  </label>
-                  <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
-                </div>
-
-                <div className="form-group col-md-6">
-
-                  <label for="exampleInputPassword1">
-                    TimeOut : &nbsp;
-                  </label>
-                  <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
+                  {fillDepartmentData()}
+                  {fillOfficeData()}
+                  {fillHostData()}
 
 
-                </div>
+                </fieldset>
+                <br />
+                <fieldset className="row">
+                  <legend>Time Information:</legend>
+                  <div className="form-group col-md-6">
 
-              </fieldset>
+                    <label for="exampleInputPassword1">
+                      Time In : &nbsp;
+                    </label>
+                    <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
+                  </div>
+
+                  <div className="form-group col-md-6">
+
+                    <label for="exampleInputPassword1">
+                      TimeOut : &nbsp;
+                    </label>
+                    <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
 
 
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
+                  </div>
+
+                </fieldset>
+
+
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}  >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
         </div>
+
+
+
       </div>
-
-
-
-    </div>
+    </form>
   )
 }
 

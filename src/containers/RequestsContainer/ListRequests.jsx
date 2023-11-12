@@ -90,8 +90,10 @@ function ListRequests() {
     if (_data == undefined) return;
 
 
+    let count = 0;
 
     return _data.map((item) => (
+     
       <tr key={item.id} value={item.id} onClick={() => handleRowClick(item.id)} className={(selectedValues.includes(item.id) || parentCheckboxChecked) ? "row-selected" : ""}>
         <td>
           <CheckboxElement
@@ -99,7 +101,11 @@ function ListRequests() {
             isChecked={parentCheckboxChecked ? parentCheckboxChecked : selectedValues.includes(item.id)}
             handleOnChange={handleCheckboxChange}
           />
+         
         </td>
+        <td> {
+            count = count +1
+          }</td>
         <td>{item.host.first_name + " " + item.host.other_names}</td>
         <td>{item.guest.first_name + " " + item.guest.other_names}</td>
         <td>{item.status}</td>
@@ -117,10 +123,14 @@ function ListRequests() {
     <div>
       <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
       <TopSleave  active_tab="list" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add"  />
+    
+    <div className="table_view tableFixHead">
+
+   
       <table className="table tableFixHead">
         <thead>
           <tr>
-            <th>
+            <th colSpan={2}>
               <CheckboxElement
                 value={"parent"}
                 isChecked={parentCheckboxChecked}
@@ -146,7 +156,7 @@ function ListRequests() {
 
         </tbody>
       </table>
-
+      </div>
       <Pagination />
     </div>
   );

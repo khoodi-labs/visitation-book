@@ -9,7 +9,7 @@ function Requests() {
  
   return (
     <div>
-      	<PageHeader title="REQUESTS"  />
+      	<PageHeader title="Requests"  />
       <Outlet />
     </div>
   );
