@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import AlertElement from '../../components/Common/AlertElement'
 import TopSleave from '../../components/Common/TopSearchSleave'
@@ -10,6 +10,7 @@ import DateTimePicker from "react-datetime-picker";
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
+import ProfileService from '../../services/ProfileService';
 
 
 function AddRequest(props) {
@@ -20,18 +21,44 @@ function AddRequest(props) {
 
   const [timeOutDate, changeTimeOut] = useState(timeInDate);
 
+  
+  const [hostData, setHostData] = useState([]);
+
+  const [officeData, setOfficeData] = useState([]);
+  const [departmentData, setDepartmentData] = useState([]);
+
+
+  //on every load load data and move 
+  useEffect(() => {
+    //todo: set up loader and move 
+    showAlert(true);
+    ProfileService().list(20, 0, "HOST", (data) => {
+      showAlert(false);
+
+      //todo: 
+      let profiles = new Array();
+
+      data.map(x => {
+        let _name = x.first_name + " " + x.last_name;
+        let _id = x.id;
+        let profile = { value: _id, label: _name }
+        profiles.push(profile);
+      });
+      setHostData(profiles);
+    });
+
+    console.log("--host data----");
+    console.table(hostData);
+
+    showAlert(true);
+  }, []);
 
 
 
+ 
 
-  const departmentData = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
-
-  const fillDepartmentData = (data) => {
-    return data != undefined && data != null && data.length > 0 ?
+  const fillDepartmentData = () => {
+    return departmentData != undefined && departmentData != null && departmentData.length > 0 ?
 
       <div className="form-group col-md-4">
 
@@ -43,29 +70,29 @@ function AddRequest(props) {
       : ""
   }
 
-  const fillOfficeData = (data) => {
-    return data != undefined && data != null && data.length > 0 ?
+  const fillOfficeData = () => {
+    return officeData != undefined && officeData != null && officeData.length > 0 ?
 
       <div className="form-group col-md-4">
 
         <label for="office_data">
           Office
         </label>
-        <SelectElement data={departmentData} required />
+        <SelectElement data={officeData} required />
       </div>
       : ""
   }
 
 
-  const fillHostData = (data) => {
-    return data != undefined && data != null && data.length > 0 ?
+  const fillHostData = () => {
+    return hostData != undefined && hostData != null && hostData.length > 0 ?
 
       <div className="form-group col-md-4">
 
         <label for="host_data">
           Host
         </label>
-        <SelectElement data={departmentData} required />
+        <SelectElement data={hostData} required />
       </div>
       : ""
   }

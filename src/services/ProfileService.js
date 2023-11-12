@@ -6,7 +6,7 @@ const ProfileService = () =>{
 
 
     const getList =(limit, offset, profileType,callback)=>{
-        const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset;+ "&profileType=" + profileType;
+        const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset+ "&profileType=" + profileType;
         fetch(apiUrl)
           .then((response) => response.json())
           .then((data) => { 
