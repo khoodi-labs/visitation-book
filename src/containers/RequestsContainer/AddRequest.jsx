@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import AlertElement from '../../components/Common/AlertElement'
 import TopSleave from '../../components/Common/TopSearchSleave'
@@ -10,117 +10,178 @@ import DateTimePicker from "react-datetime-picker";
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
+import ProfileService from '../../services/ProfileService';
 
 
 function AddRequest(props) {
 
-  
+
   const [alertSet, showAlert] = useState(false);
   const [timeInDate, changeTimeIn] = useState(new Date());
 
   const [timeOutDate, changeTimeOut] = useState(timeInDate);
 
+  
+  const [hostData, setHostData] = useState([]);
+
+  const [officeData, setOfficeData] = useState([]);
+  const [departmentData, setDepartmentData] = useState([]);
+
+
+  //on every load load data and move 
+  useEffect(() => {
+    //todo: set up loader and move 
+    showAlert(true);
+    ProfileService().list(20, 0, "HOST", (data) => {
+      showAlert(false);
+
+      //todo: 
+      let profiles = new Array();
+
+      data.map(x => {
+        let _name = x.first_name + " " + x.last_name;
+        let _id = x.id;
+        let profile = { value: _id, label: _name }
+        profiles.push(profile);
+      });
+      setHostData(profiles);
+    });
+
+    console.log("--host data----");
+    console.table(hostData);
+
+    showAlert(true);
+  }, []);
+
+
+
+ 
+
+  const fillDepartmentData = () => {
+    return departmentData != undefined && departmentData != null && departmentData.length > 0 ?
+
+      <div className="form-group col-md-4">
+
+        <label for="department_data">
+          Department
+        </label>
+        <SelectElement data={departmentData} required />
+      </div>
+      : ""
+  }
+
+  const fillOfficeData = () => {
+    return officeData != undefined && officeData != null && officeData.length > 0 ?
+
+      <div className="form-group col-md-4">
+
+        <label for="office_data">
+          Office
+        </label>
+        <SelectElement data={officeData} required />
+      </div>
+      : ""
+  }
+
+
+  const fillHostData = () => {
+    return hostData != undefined && hostData != null && hostData.length > 0 ?
+
+      <div className="form-group col-md-4">
+
+        <label for="host_data">
+          Host
+        </label>
+        <SelectElement data={hostData} required />
+      </div>
+      : ""
+  }
+
+
+
   return (
     <div>
-    <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
-    <TabsElement active_tab="add" list_url="/dashboard/visitations/list" add_url="/dashboard/visitations/add" />
+      <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
+      <TabsElement active_tab="add" list_url="/dashboard/visitations/list" add_url="/dashboard/visitations/add" />
 
 
-    <div className="container-fluid main-wrapper">
-      <div className="row">
-        <div className="col-md-12">
-          <form role="form" method="POST">
+      <div className="container-fluid main-wrapper">
+        <div className="row">
+          <div className="col-md-12">
+            <form role="form" method="POST">
 
-            <fieldset className="row">
-              <legend>Personal Information:</legend>
+              <fieldset className="row">
+                <legend>Personal Information:</legend>
 
-              <div className="form-group col-md-6">
+                <div className="form-group col-md-6">
 
-                <label for="first_name">
-                  First Name
-                </label>
-                <input type="text" className="form-control" id="first_name" />
-              </div>
+                  <label for="first_name">
+                    First Name
+                  </label>
+                  <input type="text" className="form-control" id="first_name" required />
+                </div>
 
-              <div className="form-group col-md-6">
+                <div className="form-group col-md-6">
 
-                <label for="first_name">
-                  Other Names
-                </label>
-                <input type="text" className="form-control" id="other_names" />
-              </div>
+                  <label for="first_name">
+                    Other Names
+                  </label>
+                  <input type="text" className="form-control" id="other_names" required />
+                </div>
 
-              <div className="form-group col-md-12">
+                <div className="form-group col-md-12">
 
-                <label for="first_name">
-                  Address :
-                </label>
-                <input autocomplete="home street-address" type="text" className="form-control" id="other_names" />
-              </div>
-            </fieldset> <br />
-            <fieldset className="row">
-              <legend>Host Information:</legend>
-
-              <div className="form-group col-md-4">
-
-                <label for="exampleInputEmail1">
-                  Department
-                </label>
-                <SelectElement />
-              </div>
-
-              <div className="form-group col-md-4">
-
-                <label for="exampleInputEmail1">
-                  Office
-                </label>
-                <SelectElement />
-              </div>
-
-              <div className="form-group col-md-4">
-
-                <label for="exampleInputEmail1">
-                  Host
-                </label>
-                <SelectElement />
-              </div>
-
-            </fieldset>
-            <br />
-            <fieldset className="row">
-              <legend>Time Information:</legend>
-              <div className="form-group col-md-6">
-
-                <label for="exampleInputPassword1">
-                  Time In : &nbsp;
-                </label>
-                <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
-              </div>
-
-              <div className="form-group col-md-6">
-
-                <label for="exampleInputPassword1">
-                TimeOut : &nbsp;
-                </label>
-                <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
-                
-                
-              </div>
-
-            </fieldset>
+                  <label for="address">
+                    Address :
+                  </label>
+                  <input autocomplete="home street-address" type="text" className="form-control" id="address" required />
+                </div>
+              </fieldset> <br />
+              <fieldset className="row">
+                <legend>Host Information:</legend>
 
 
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </form>
+                {fillDepartmentData()}
+                {fillOfficeData()}
+                {fillHostData()}
+
+
+              </fieldset>
+              <br />
+              <fieldset className="row">
+                <legend>Time Information:</legend>
+                <div className="form-group col-md-6">
+
+                  <label for="exampleInputPassword1">
+                    Time In : &nbsp;
+                  </label>
+                  <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
+                </div>
+
+                <div className="form-group col-md-6">
+
+                  <label for="exampleInputPassword1">
+                    TimeOut : &nbsp;
+                  </label>
+                  <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
+
+
+                </div>
+
+              </fieldset>
+
+
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
+
+
+
     </div>
-
-
-
-  </div>
   )
 }
 

@@ -4,16 +4,12 @@ import PropTypes from 'prop-types'
 
 function SelectElement(props) {
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ]
+    const {data} = props
 
       
 
   return (
-    <Select options={options} />
+    <Select options={data} />
   )
 }
 

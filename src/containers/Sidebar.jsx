@@ -34,7 +34,7 @@ function Sidebar(props) {
 
                     </Link>
                 </li>
-                <li onClick={()=>Location.}>
+                <li  >
                     <Link to="/dashboard/visitations/list">
                         {expanded ? <span>  <FontAwesomeIcon icon={faBookOpen} /> Visitations</span> : <span>  <FontAwesomeIcon icon={faBookOpen} />   </span>}
 
