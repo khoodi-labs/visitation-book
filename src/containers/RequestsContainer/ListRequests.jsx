@@ -32,9 +32,10 @@ function ListRequests() {
 
 
   const [alertSet, showAlert] = useState(false);
+  const [msgtype, setMsgType] = useState("info");
+  const [msgDetail, setMsgDetail] = useState("Processing..");
 
-
-
+  const [alertCSsStatus, setAlertCssStatus] = useState("alert alert-info alert-dismissable")
 
   const handleRowClick = (id) => {
     selectedValues.find((x) => x === id) ?
@@ -63,10 +64,20 @@ function ListRequests() {
   //on every load load data and move 
   useEffect(() => {
     showAlert(true);
+    setAlertCssStatus("alert alert-info alert-dismissable")
     RequestService().list(20, 0, "", (data) => {
-      showAlert(false);
-      setData(data)
-    })
+      if (data !== undefined) {
+        showAlert(false);
+        setData(data)
+      }
+
+    }, (err) => {
+      if (err != undefined) {
+        setAlertCssStatus("alert alert-warning alert-dismissable")
+        setMsgDetail(err.message)
+      }
+    }
+    )
   }, []);
 
 
@@ -121,7 +132,7 @@ function ListRequests() {
 
   return (
     <div>
-      <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
+      <AlertElement cssClass={alertSet === true ? alertCSsStatus : "hide"} msgtype={msgtype} msgDetail={msgDetail} />
       <TopSleave active_tab="list" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
 
       <div className="table_view tableFixHead">

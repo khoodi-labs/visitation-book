@@ -4,7 +4,7 @@ const RequestService = () => {
   const url = BASE_URL;
   const endpoint = "/v1/request/visit/list";
 
-  const getList = (limit, offset, query, callback) => {
+  const getList = (limit, offset, query, callback,erorResponse) => {
     const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset;
     fetch(apiUrl)
       .then((response) => response.json())
@@ -12,7 +12,9 @@ const RequestService = () => {
         callback(data);
       })
       .catch((error) => {
+      
         console.error("Error fetching data:", error);
+        erorResponse(error);
       });
   };
 
