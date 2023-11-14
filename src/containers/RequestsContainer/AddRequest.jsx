@@ -41,6 +41,12 @@ function AddRequest(props) {
     alert("handle validate profile")
   }
 
+  const handleProfileValidate=(event)=>{
+    event.preventDefault();
+    console.log("Lord have mercy ");
+    alert("passme me mover ")
+  }
+
   const handleSubmit = (event) => {
   
     event.preventDefault();
@@ -191,7 +197,7 @@ function AddRequest(props) {
                   <div className="form-group col-md-12">
 
 
-                    <button type="button" className="btn btn-primary" onClick={handleValidateProfile}  >
+                    <button type="button" className="btn btn-primary" onClick={handleProfileValidate}  >
                       Validate
                     </button>
 
