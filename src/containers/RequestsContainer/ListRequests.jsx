@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import constants from "../../components/utils/constants";
 import RequestService from "../../services/RequestsService";
 import CheckboxElement from "../../components/Common/CheckboxElement";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import { faL, faYenSign } from "@fortawesome/free-solid-svg-icons";
 import InputElement from "../../components/Common/InputElement";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -121,9 +121,9 @@ function ListRequests() {
         <td>{item.guest.first_name + " " + item.guest.other_names}</td>
         <td>{item.status}</td>
         <td>{item.inv_type}</td>
-        <td className="date-tab" >{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>
-        <td className="date-tab">{simpleDate(item.created_at)}</td>
-        <td> <FontAwesomeIcon icon={faEdit} /> |  <FontAwesomeIcon icon={faTrash} /> </td>
+        <td className="date-tab left" >{manageDates(item.start_date)} - {manageDates(item.end_date)}</td>
+        <td className="date-tab right">{simpleDate(item.created_at)}</td>
+        <td> <FontAwesomeIcon icon={faEdit} /> &nbsp;  <FontAwesomeIcon icon={faTrash} /> &nbsp;  <FontAwesomeIcon icon={faYenSign} /> </td>
       </tr>
     )
 
@@ -132,6 +132,7 @@ function ListRequests() {
 
   return (
     <div>
+      
       <AlertElement cssClass={alertSet === true ? alertCSsStatus : "hide"} msgtype={msgtype} msgDetail={msgDetail} />
       <TopSleave active_tab="list" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
 
