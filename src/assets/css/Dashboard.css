@@ -2,12 +2,11 @@ body {
   /* font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
 
   font-family: "Mona Sans", "Mona Sans Header Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-}
-.Dashboard
-{
   background-color: #fff;
 }
+
+.Dashboard {}
+
 .main-container {
   width: 96% !important;
 }
@@ -97,11 +96,12 @@ body {
   color: #fff !important;
 }
 
-.table_view{
-  height: 400px; overflow-y: auto;
+.table_view {
+  height: 400px;
+  overflow-y: auto;
 }
 
- 
+
 
 .table thead th {
   position: sticky;
@@ -109,8 +109,20 @@ body {
   z-index: 1;
 }
 
-.date-tab{
+.date-tab {
+  /* text-align: left !important; */
+}
+
+.right {
   text-align: right !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.left {
+  text-align: left !important;
 }
 
 
@@ -118,93 +130,83 @@ body {
 .Dashboard {
   display: flex;
   height: 100vh;
-  width: 100%;  
+  width: 100%;
 }
 
 .content {
   flex-grow: 0;
   padding: 20px;
 }
-.hide{
+
+.hide {
   display: none;
 }
 
- 
 
- 
 
-fieldset 
-{
+
+
+fieldset {
   border: 1px solid #ddd !important;
   margin: 0;
   xmin-width: 0;
-  padding: 10px;       
+  padding: 10px;
   position: relative;
-  border-radius:4px; 
-  padding-left:10px!important;
-}	
-
-  legend
-  {
-    font-size:14px;
-    font-weight:bold;
-    margin-bottom: 0px; 
-    width: 35%; 
-    border: 1px solid #ddd;
-    border-radius: 4px; 
-    padding: 5px 5px 5px 10px; 
-    background-color: #ffffff;
-  }
-
-  .main-wrapper{
-    height: 450px; overflow: hidden; overflow-y: scroll;
-  }
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .table-fixed {
-    background-color: #fbfbfb;
-    width: 100%;
+  border-radius: 4px;
+  padding-left: 10px !important;
 }
+
+legend {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  width: 35%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 5px 5px 10px;
+  background-color: #ffffff;
+}
+
+.main-wrapper {
+  height: 450px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+
+
+
+
+
+.table-fixed {
+  background-color: #fbfbfb;
+  width: 100%;
+}
+
 .table-fixed tbody {
-    height: 200px;
-    overflow-y: auto;
-    width: 100%;
+  height: 200px;
+  overflow-y: auto;
+  width: 100%;
 }
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-    display: block;
-}
-.table-fixed tbody td {
-    float: left;
-}
- 
 
- th {
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+}
+
+.table-fixed tbody td {
+  float: left;
+}
+
+
+th {
   background-color: #040404;
-    
+
+}
+
+.btn {
+  cursor: pointer;
 }
