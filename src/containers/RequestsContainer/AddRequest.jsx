@@ -14,6 +14,7 @@ import ProfileService from '../../services/ProfileService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faL, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import RequestService from '../../services/RequestsService';
 
 
 function AddRequest(props) {
@@ -48,7 +49,7 @@ function AddRequest(props) {
 
 
   //todo: set office id
-  const [guestId, setGuestId] = useState(); 
+  const [guestId, setGuestId] = useState();
   const [selectedHost, setSelectedHost] = useState(null);
 
 
@@ -82,26 +83,17 @@ function AddRequest(props) {
       profile_type: "GUEST"
     };
 
-    fetch("http://localhost:9000/v1/profile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setGuestId(data.id);
-        validateProfile(true);
-        console.table(data);
-        showAlert(false);
-      })
-      .catch((error) => {
-        setGuestId(null);
-        validateProfile(false);
-        console.log(error);
-      });
 
+    ProfileService().add(formData, (data) => {
+      setGuestId(data.id);
+      validateProfile(true);
+      console.table(data);
+      showAlert(false);
+    }, (error) => {
+      setGuestId(null);
+      validateProfile(false);
+      console.log(error);
+    })
 
 
   }
@@ -110,17 +102,17 @@ function AddRequest(props) {
 
   const handleSubmit = (event) => {
 
-    if(profileValidate == false){
+    if (profileValidate == false) {
       setMsgDetail("Validate Profile  ");
       showAlert(true);
-      return ;
+      return;
     }
 
 
-    if(selectedHost === undefined || selectedHost === null){
+    if (selectedHost === undefined || selectedHost === null) {
       setMsgDetail("Select Host ");
       showAlert(true);
-      return ;
+      return;
     }
     setMsgDetail("Processing ... ");
     showAlert(true);
@@ -134,34 +126,19 @@ function AddRequest(props) {
       inv_type: "ONLINE"
     };
 
+    RequestService().add(formData, (data) => {
+      setTimeout(() => {
+        navigate("/dashboard/requests/list");
+      }, 2000);
+      console.log(data);
+    }, (error) => {
+      showAlert(true);
+      setMsgDetail(error.message);
 
-    // Submit the form data to a backend server
-    fetch("http://localhost:9000/v1/request/visit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
+      console.log(error);
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from the backend server
-        setTimeout(()=>{
-          navigate("/dashboard/requests/list");
-        }, 2000);
-        console.log(data);
-       
-      })
-      .catch((error) => {
-        // Handle the error
-        showAlert(true);
-        setMsgDetail(error.message);
-   
-        console.log(error);
-      });
 
 
- 
   }
 
 
@@ -231,9 +208,9 @@ function AddRequest(props) {
         <label for="host_data">
           Host
         </label>
-   
+
         <SelectElement data={hostData} selectedValue={selectedHost} onChange={handleHostData} />
-   
+
       </div>
       : ""
   }

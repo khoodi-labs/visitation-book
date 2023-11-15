@@ -1,18 +1,39 @@
 import { BASE_URL } from "./Utils";
 
 const RequestService = () => {
-  const url = BASE_URL;
-  const endpoint = "/v1/request/visit/list";
+  const URL = BASE_URL;
+  const LISTENDPOINT = "/v1/request/visit/list";
+  const CREATEENDPOINT = "/v1/request/visit";
 
-  const getList = (limit, offset, query, callback,erorResponse) => {
-    const apiUrl = url + endpoint + "?limit=" + limit + "&offset=" + offset;
-    fetch(apiUrl)
+  const create = (formData, callback, errorCallback) => {
+    const apiUrl = URL + CREATEENDPOINT;
+
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
       .then((response) => response.json())
-      .then((data) => { 
+      .then((data) => {
+        console.table(data);
         callback(data);
       })
       .catch((error) => {
-      
+        console.error("Error fetching data:", error);
+        errorCallback(error);
+      });
+  };
+
+  const getList = (limit, offset, query, callback, erorResponse) => {
+    const apiUrl = URL + LISTENDPOINT + "?limit=" + limit + "&offset=" + offset;
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        callback(data);
+      })
+      .catch((error) => {
         console.error("Error fetching data:", error);
         erorResponse(error);
       });
@@ -26,15 +47,11 @@ const RequestService = () => {
     //send archive data
   };
 
-  const save = (data) => {
-    //todo: send save data
-  };
-
   return {
     list: getList,
     get: getByID,
     archive: archive,
-    save: save,
+    add: create,
   };
 };
 export default RequestService;
