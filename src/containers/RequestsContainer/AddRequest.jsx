@@ -35,22 +35,48 @@ function AddRequest(props) {
 
 
   //form data
+  const [firstName, setFirstName] = useState();
+  const [otherNames, setOtherNames] = useState();
+  const [address, setAddress] = useState();
 
-  const [firstName, setFirstName] = useState("");
-  const [otherNames, setOtherNames] = useState("");
-  const [address, setAddress] = useState("");
 
+
+  //todo: set office id
+  const [profileId, setOfficeId] = useState();
 
   const handleValidateProfile = (event) => {
     event.preventDefault();
-    alert("handle validate profile")
+    const formData = {
+      first_name: firstName,
+      other_names: otherNames,
+      profile_type: "GUEST"
+    };
+
+    fetch("http://localhost:9000/v1/profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setOfficeId(data.id);
+        validateProfile(true);
+        console.table(data);
+      })
+      .catch((error) => {
+        setOfficeId(null);
+        validateProfile(false);
+        console.log(error);
+      });
+
+    alert("pass me");
+
+
   }
 
-  const handleProfileValidate = (event) => {
-    event.preventDefault();
-    console.log("Lord have mercy ");
-    alert("passme me mover ")
-  }
+
 
   const handleSubmit = (event) => {
 
@@ -180,15 +206,15 @@ function AddRequest(props) {
                     <label for="first_name">
                       First Name
                     </label>
-                    <input type="text" value={firstName} onChange={setFirstName} className="form-control" id="first_name" required />
+                    <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" id="first_name" required />
                   </div>
 
                   <div className="form-group col-md-6">
 
-                    <label for="first_name">
+                    <label for="other_names">
                       Other Names
                     </label>
-                    <input type="text" value={otherNames} onChange={setOtherNames} className="form-control" id="other_names" required />
+                    <input type="text" value={otherNames} onChange={(e) => setOtherNames(e.target.value)} className="form-control" id="other_names" required />
                   </div>
 
                   <div className="form-group col-md-12">
@@ -196,7 +222,7 @@ function AddRequest(props) {
                     <label for="address">
                       Address :
                     </label>
-                    <input value={address} onChange={setAddress} autocomplete="home street-address" type="text" className="form-control" id="address" required />
+                    <input value={address} onChange={(e) => setAddress(e.target.value)} autocomplete="home street-address" type="text" className="form-control" id="address" required />
                   </div>
 
                   <div className="form-group col-md-12">
@@ -207,10 +233,10 @@ function AddRequest(props) {
 
 
                     <div className="input-group input-group-lg ">
-                      <button type="button" className={profileValidate === true ? "btn btn-primary alert-info" : "btn btn-primary alert-danger"} onClick={handleProfileValidate}  >
+                      <button type="button" className={profileValidate === true ? "btn btn-primary alert-info" : "btn btn-primary alert-danger"} onClick={handleValidateProfile}  >
                         Validate
                       </button>
-                      <span className={profileValidate === true ? " btn input-group-addon alert-info" : " btn input-group-addon alert-danger"}  onClick={handleProfileValidate} >
+                      <span className={profileValidate === true ? " btn input-group-addon alert-info" : " btn input-group-addon alert-danger"} onClick={handleValidateProfile} >
                         <FontAwesomeIcon icon={faQuestionCircle} />
                       </span>
 
