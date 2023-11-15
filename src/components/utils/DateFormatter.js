@@ -6,19 +6,25 @@ export const manageDates = (str) => {
   if (str === null) return "  ";
 
   const parse = Date.parse(str);
-  let date = new Date(parse);
-  let year = date.getFullYear();
+  const date = new Date(parse);
+  const year = date.getFullYear();
+  const month = date.getMonth();
 
-  let currentDate = new Date();
-  let currentYear = currentDate.getFullYear();
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
 
   if (year.toString() === "NaN") {
     return "- ";
   }
 
   if (year === currentYear) {
-    return moment(str).format("MMM Do");
+    switch(currentMonth){
+      case month: return moment(str).format(" Do   HH:mm");
+      default:  return moment(str).format("MMM Do HH:mm");
+    } 
   }
 
-  return moment(str).format("DD-MM-YYYY");
+
+  return moment(str).format("DD-MM-YYYY HH:mm");
 };

@@ -47,7 +47,18 @@ function AddRequest(props) {
 
 
   //todo: set office id
-  const [profileId, setOfficeId] = useState();
+  const [guestId, setGuestId] = useState(); 
+  const [selectedHost, setSelectedHost] = useState(null);
+
+
+
+  const handleHostData = (selectedOption) => {
+    console.log(selectedHost);
+    setSelectedHost(selectedOption);
+  };
+
+
+
 
   const handleValidateProfile = (event) => {
     event.preventDefault();
@@ -79,13 +90,13 @@ function AddRequest(props) {
     })
       .then((response) => response.json())
       .then((data) => {
-        setOfficeId(data.id);
+        setGuestId(data.id);
         validateProfile(true);
         console.table(data);
         showAlert(false);
       })
       .catch((error) => {
-        setOfficeId(null);
+        setGuestId(null);
         validateProfile(false);
         console.log(error);
       });
@@ -100,10 +111,8 @@ function AddRequest(props) {
 
     event.preventDefault();
     const formData = {
-      host_id: 17,
-      guest_id: 19,
-      office_id: 1,
-      department_id: 2,
+      host_id: selectedHost.value,
+      guest_id: guestId,
       time_in: timeInDate,
       time_out: timeOutDate,
       inv_type: "ONLINE"
@@ -125,11 +134,14 @@ function AddRequest(props) {
       })
       .catch((error) => {
         // Handle the error
+        showAlert(true);
+        setMsgDetail(error.message);
+   
         console.log(error);
       });
 
 
-    alert("testing");
+ 
   }
 
 
@@ -190,6 +202,7 @@ function AddRequest(props) {
   }
 
 
+
   const fillHostData = () => {
     return hostData != undefined && hostData != null && hostData.length > 0 ?
 
@@ -198,7 +211,9 @@ function AddRequest(props) {
         <label for="host_data">
           Host
         </label>
-        <SelectElement data={hostData} required />
+   
+        <SelectElement data={hostData} selectedValue={selectedHost} onChange={handleHostData} />
+   
       </div>
       : ""
   }
