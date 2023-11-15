@@ -12,7 +12,7 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import ProfileService from '../../services/ProfileService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faL, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 function AddRequest(props) {
@@ -39,6 +39,11 @@ function AddRequest(props) {
   const [otherNames, setOtherNames] = useState();
   const [address, setAddress] = useState();
 
+  const [alertCSsStatus, setAlertCssStatus] = useState("alert alert-info alert-dismissable")
+
+  const [msgDetail, setMsgDetail] = useState("Processing ...")
+
+
 
 
   //todo: set office id
@@ -46,6 +51,19 @@ function AddRequest(props) {
 
   const handleValidateProfile = (event) => {
     event.preventDefault();
+
+
+    if (firstName === undefined || otherNames === undefined) {
+      setMsgDetail("Guest Names are mandatory ");
+      showAlert(true);
+      return;
+    }
+
+
+    validateProfile(false);
+    showAlert(true);
+    setAlertCssStatus("alert alert-info alert-dismissable")
+
     const formData = {
       first_name: firstName,
       other_names: otherNames,
@@ -64,6 +82,7 @@ function AddRequest(props) {
         setOfficeId(data.id);
         validateProfile(true);
         console.table(data);
+        showAlert(false);
       })
       .catch((error) => {
         setOfficeId(null);
@@ -71,7 +90,6 @@ function AddRequest(props) {
         console.log(error);
       });
 
-    alert("pass me");
 
 
   }
@@ -189,7 +207,7 @@ function AddRequest(props) {
   return (
     <form onSubmit={() => { alert("blessed") }}>
       <div>
-        <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
+        <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail={msgDetail} />
         <TabsElement active_tab="add" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
 
 
@@ -233,11 +251,11 @@ function AddRequest(props) {
 
 
                     <div className="input-group input-group-lg ">
-                      <button type="button" className={profileValidate === true ? "btn btn-primary alert-info" : "btn btn-primary alert-danger"} onClick={handleValidateProfile}  >
+                      <button type="button" className={profileValidate === true ? "btn btn-primary alert-success" : "btn btn-primary alert-danger"} onClick={handleValidateProfile}  >
                         Validate
                       </button>
-                      <span className={profileValidate === true ? " btn input-group-addon alert-info" : " btn input-group-addon alert-danger"} onClick={handleValidateProfile} >
-                        <FontAwesomeIcon icon={faQuestionCircle} />
+                      <span className={profileValidate === true ? " btn input-group-addon alert-success" : " btn input-group-addon alert-danger"} onClick={handleValidateProfile} >
+                        <FontAwesomeIcon icon={profileValidate === true ? faCheckCircle : faQuestionCircle} />
                       </span>
 
                     </div>
