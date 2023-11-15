@@ -26,5 +26,5 @@ export const manageDates = (str) => {
   }
 
 
-  return moment(str).format("DD-MM-YYYY HH:mm");
+  return moment(str).format("YYYY MMM  Do HH:mm");
 };
