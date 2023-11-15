@@ -13,11 +13,12 @@ import 'react-clock/dist/Clock.css';
 import ProfileService from '../../services/ProfileService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faL, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 
 function AddRequest(props) {
 
-
+  const navigate = useNavigate();
   const [alertSet, showAlert] = useState(false);
   const [timeInDate, changeTimeIn] = useState(new Date());
 
@@ -109,6 +110,21 @@ function AddRequest(props) {
 
   const handleSubmit = (event) => {
 
+    if(profileValidate == false){
+      setMsgDetail("Validate Profile  ");
+      showAlert(true);
+      return ;
+    }
+
+
+    if(selectedHost === undefined || selectedHost === null){
+      setMsgDetail("Select Host ");
+      showAlert(true);
+      return ;
+    }
+    setMsgDetail("Processing ... ");
+    showAlert(true);
+
     event.preventDefault();
     const formData = {
       host_id: selectedHost.value,
@@ -130,7 +146,11 @@ function AddRequest(props) {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the backend server
+        setTimeout(()=>{
+          navigate("/dashboard/requests/list");
+        }, 2000);
         console.log(data);
+       
       })
       .catch((error) => {
         // Handle the error
