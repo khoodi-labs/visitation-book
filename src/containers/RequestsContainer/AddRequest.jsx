@@ -11,6 +11,8 @@ import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import ProfileService from '../../services/ProfileService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 function AddRequest(props) {
@@ -27,6 +29,9 @@ function AddRequest(props) {
   const [officeData, setOfficeData] = useState([]);
   const [departmentData, setDepartmentData] = useState([]);
 
+  //is profile validated
+  const [profileValidate, validateProfile] = useState(false);
+
 
 
   //form data
@@ -36,19 +41,19 @@ function AddRequest(props) {
   const [address, setAddress] = useState("");
 
 
-  const handleValidateProfile = (event) =>{
+  const handleValidateProfile = (event) => {
     event.preventDefault();
     alert("handle validate profile")
   }
 
-  const handleProfileValidate=(event)=>{
+  const handleProfileValidate = (event) => {
     event.preventDefault();
     console.log("Lord have mercy ");
     alert("passme me mover ")
   }
 
   const handleSubmit = (event) => {
-  
+
     event.preventDefault();
     const formData = {
       host_id: 17,
@@ -197,9 +202,20 @@ function AddRequest(props) {
                   <div className="form-group col-md-12">
 
 
-                    <button type="button" className="btn btn-primary" onClick={handleProfileValidate}  >
-                      Validate
-                    </button>
+
+
+
+
+                    <div className="input-group input-group-lg ">
+                      <button type="button" className={profileValidate === true ? "btn btn-primary alert-info" : "btn btn-primary alert-danger"} onClick={handleProfileValidate}  >
+                        Validate
+                      </button>
+                      <span className={profileValidate === true ? " btn input-group-addon alert-info" : " btn input-group-addon alert-danger"}  onClick={handleProfileValidate} >
+                        <FontAwesomeIcon icon={faQuestionCircle} />
+                      </span>
+
+                    </div>
+
 
                   </div>
 

@@ -198,3 +198,8 @@ fieldset
   background-color: #040404;
     
 }
+
+.btn
+{
+  cursor: pointer;
+}
