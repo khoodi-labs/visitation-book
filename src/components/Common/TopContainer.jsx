@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import DearHEad from  "../../assets/images/dear-logo.png"
 function TopContainer(props) {
   return (
-    <div>
-        <h1>VISITATION BOOK</h1>
+    <div >
+       
     </div>
   )
 }
