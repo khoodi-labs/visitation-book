@@ -131,12 +131,17 @@ function AddRequest(props) {
         navigate("/dashboard/requests/list");
       }, 2000);
       console.log(data);
-    }, (error) => {
+    }
+    /*
+    , (error) => {
       showAlert(true);
       setMsgDetail(error.message);
 
       console.log(error);
-    })
+    }
+    */
+    
+    )
 
 
   }

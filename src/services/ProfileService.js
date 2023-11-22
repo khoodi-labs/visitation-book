@@ -6,7 +6,7 @@ const CREATEENDPOINT = "/v1/profile";
 
 
 const ProfileService = () =>{ 
-    const create=(formData,callback,errorCallback)=>{
+    const create=(formData,callback)=>{
       const apiUrl = URL + CREATEENDPOINT; 
       fetch(apiUrl, {
         method: "POST",
@@ -22,14 +22,14 @@ const ProfileService = () =>{
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
-          errorCallback(error);
+       //   errorCallback(error);
         });
 
 
     }
 
 
-    const getList =(limit, offset, profileType,callback,errorCallback)=>{
+    const getList =(limit, offset, profileType,callback)=>{
         const apiUrl = URL + LISTENDPOINT + "?limit=" + limit + "&offset=" + offset+ "&profileType=" + profileType;
         fetch(apiUrl)
           .then((response) => response.json())
@@ -39,7 +39,7 @@ const ProfileService = () =>{
           })
           .catch((error) => {
             console.error("Error fetching data:", error.message);
-            errorCallback(error)
+          //  errorCallback(error)
           });
     }
 

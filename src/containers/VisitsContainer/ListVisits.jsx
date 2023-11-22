@@ -65,7 +65,7 @@ function ListVisits() {
       showAlert(false);
       setData(data);
     },(error)=>{
-    //  console.log(error.message)
+        console.log(error.message)
     } )
     
     
