@@ -1,7 +1,9 @@
 import logo from "./logo.svg";
+import dotenv from 'dotenv';
 import "./App.css";
 
 function App() {
+  dotenv.config();
   return (
     <div className="App">
       <header className="App-header">

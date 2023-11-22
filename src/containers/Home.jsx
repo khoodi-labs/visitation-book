@@ -12,9 +12,12 @@ import ListVisits from "./VisitsContainer/ListVisits";
 import AddVisit from "./VisitsContainer/AddVisit";
 import Overview from "./Overview";
 import Signin from "./auth/Signin";
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 function Home() {
+
   return (
     <Router>
       <Routes>

@@ -1,10 +1,13 @@
 import { BASE_URL } from "./Utils";
 
-const VisitationsService = () => {
-  const URL = BASE_URL;
-  const LISTENDPOINT = "/v1/visitation/list";
-  const CREATEENDPOINT = "/v1/visitation";
+const URL = BASE_URL;
+const LISTENDPOINT = "/v1/visitation/list";
+const CREATEENDPOINT = "/v1/visitation";
 
+
+
+const VisitationsService = () => {
+ 
   const create = (formData, callback, errorCallback) => {
     const apiUrl = URL + CREATEENDPOINT;
 
@@ -35,15 +38,15 @@ const VisitationsService = () => {
       })
       .catch((error) => {
         console.log( error);
-        //erorResponse(error);
+        erorResponse(error);
       });
   };
 
-  const getByID = (id) => {
+  const getByID = (id,callback,erorResponse) => {
     //get item by id
   };
 
-  const archive = (id) => {
+  const archive = (id,callback,erorResponse) => {
     //send archive data
   };
 

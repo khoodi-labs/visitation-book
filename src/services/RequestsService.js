@@ -1,9 +1,12 @@
 import { BASE_URL } from "./Utils";
 
+const URL = BASE_URL;
+const LISTENDPOINT = "/v1/request/visit/list";
+const CREATEENDPOINT = "/v1/request/visit";
+
+
+
 const RequestService = () => {
-  const URL = BASE_URL;
-  const LISTENDPOINT = "/v1/request/visit/list";
-  const CREATEENDPOINT = "/v1/request/visit";
 
   const create = (formData, callback, errorCallback) => {
     const apiUrl = URL + CREATEENDPOINT;

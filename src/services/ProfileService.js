@@ -1,13 +1,13 @@
 import { BASE_URL } from "./Utils";
 
-const ProfileService = () =>{
-    const URL = BASE_URL
-    const LISTENDPOINT = "/v1/profile/list";
-    const CREATEENDPOINT = "/v1/profile";
+const URL = BASE_URL
+const LISTENDPOINT = "/v1/profile/list";
+const CREATEENDPOINT = "/v1/profile";
 
+
+const ProfileService = () =>{ 
     const create=(formData,callback,errorCallback)=>{
-      const apiUrl = URL + CREATEENDPOINT;
-     
+      const apiUrl = URL + CREATEENDPOINT; 
       fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -38,7 +38,8 @@ const ProfileService = () =>{
             callback(data);
           })
           .catch((error) => {
-            console.error("Error fetching data:", error);
+            console.error("Error fetching data:", error.message);
+            errorCallback(error)
           });
     }
 
