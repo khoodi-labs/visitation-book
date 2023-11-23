@@ -8,7 +8,7 @@ const CREATEENDPOINT = "/v1/visitation";
 
 const VisitationsService = () => {
  
-  const create = (formData, callback) => {
+  const create = (formData, callback,errorCallback) => {
     const apiUrl = URL + CREATEENDPOINT;
 
     fetch(apiUrl, {
@@ -25,20 +25,22 @@ const VisitationsService = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-      //  errorCallback(error);
+        errorCallback(error);
       });
   };
 
-  const getList = (limit, offset, query, callback) => {
+  const getList = (limit, offset, query, callback,erorResponse) => {
     const apiUrl = URL + LISTENDPOINT + "?limit=" + limit + "&offset=" + offset;
+    console.log(apiUrl);
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         callback(data);
       })
       .catch((error) => {
         console.log( error);
-      //  erorResponse(error);
+        erorResponse(error);
       });
   };
 

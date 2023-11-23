@@ -13,8 +13,8 @@ import 'react-clock/dist/Clock.css';
 import ProfileService from '../../services/ProfileService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faL, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import RequestService from '../../services/RequestsService';
+import { useNavigate } from 'react-router-dom'; 
+import VisitationsService from '../../services/VisitationsService';
 
 
 function AddVisit(props) {
@@ -126,20 +126,20 @@ function AddVisit(props) {
       inv_type: "ONLINE"
     };
 
-    RequestService().add(formData, (data) => {
+    VisitationsService().add(formData, (data) => {
       setTimeout(() => {
-        navigate("/dashboard/requests/list");
+        navigate("/dashboard/visitations/list");
       }, 2000);
       console.log(data);
     }
     
-    /*, (error) => {
+    , (error) => {
       showAlert(true);
       setMsgDetail(error.message);
 
       console.log(error);
     }
-    */
+    
     )
 
 
@@ -224,7 +224,7 @@ function AddVisit(props) {
     <form onSubmit={() => { alert("blessed") }}>
       <div>
         <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail={msgDetail} />
-        <TabsElement active_tab="add" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
+        <TabsElement active_tab="add" list_url="/dashboard/visitations/list" add_url="/dashboard/visitations/add" />
 
 
         <div className="container-fluid main-wrapper">
