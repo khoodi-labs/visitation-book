@@ -11,6 +11,7 @@ import Pagination from "../../components/Common/Pagination";
 
 import { simpleDate, manageDates } from '../../components/utils/DateFormatter'
 import AlertElement from "../../components/Common/AlertElement";
+import VisitationsService from "../../services/VisitationsService";
 
 
 
@@ -60,10 +61,12 @@ function ListVisits() {
   useEffect(() => {
     //todo: set up loader and move 
     showAlert(true);
-    RequestService().list(20, 0, "", (data)=>{
+    VisitationsService().list(20, 0, "", (data)=>{
       showAlert(false);
       setData(data);
-    } );
+    },(error)=>{
+        console.log(error.message)
+    } )
     
     
   }, []);

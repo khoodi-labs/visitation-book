@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import AlertElement from '../../components/Common/AlertElement'
 import TopSleave from '../../components/Common/TopSearchSleave'
@@ -10,22 +10,140 @@ import DateTimePicker from "react-datetime-picker";
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
-import ProfileService from "../../services/ProfileService";
-
+import ProfileService from '../../services/ProfileService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faL, faQuestionCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import RequestService from '../../services/RequestsService';
 
 
 function AddVisit(props) {
 
-
+  const navigate = useNavigate();
   const [alertSet, showAlert] = useState(false);
   const [timeInDate, changeTimeIn] = useState(new Date());
 
   const [timeOutDate, changeTimeOut] = useState(timeInDate);
 
+
   const [hostData, setHostData] = useState([]);
 
   const [officeData, setOfficeData] = useState([]);
   const [departmentData, setDepartmentData] = useState([]);
+
+  //is profile validated
+  const [profileValidate, validateProfile] = useState(false);
+
+
+
+  //form data
+  const [firstName, setFirstName] = useState();
+  const [otherNames, setOtherNames] = useState();
+  const [address, setAddress] = useState();
+
+  const [alertCSsStatus, setAlertCssStatus] = useState("alert alert-info alert-dismissable")
+
+  const [msgDetail, setMsgDetail] = useState("Processing ...")
+
+
+
+
+  //todo: set office id
+  const [guestId, setGuestId] = useState();
+  const [selectedHost, setSelectedHost] = useState(null);
+
+
+
+  const handleHostData = (selectedOption) => {
+    console.log(selectedHost);
+    setSelectedHost(selectedOption);
+  };
+
+
+
+
+  const handleValidateProfile = (event) => {
+    event.preventDefault();
+
+
+    if (firstName === undefined || otherNames === undefined) {
+      setMsgDetail("Guest Names are mandatory ");
+      showAlert(true);
+      return;
+    }
+
+
+    validateProfile(false);
+    showAlert(true);
+    setAlertCssStatus("alert alert-info alert-dismissable")
+
+    const formData = {
+      first_name: firstName,
+      other_names: otherNames,
+      profile_type: "GUEST"
+    };
+
+
+    ProfileService().add(formData, (data) => {
+      setGuestId(data.id);
+      validateProfile(true);
+      console.table(data);
+      showAlert(false);
+    }, (error) => {
+      setGuestId(null);
+      validateProfile(false);
+      console.log(error);
+    })
+
+
+  }
+
+
+
+  const handleSubmit = (event) => {
+
+    if (profileValidate == false) {
+      setMsgDetail("Validate Profile  ");
+      showAlert(true);
+      return;
+    }
+
+
+    if (selectedHost === undefined || selectedHost === null) {
+      setMsgDetail("Select Host ");
+      showAlert(true);
+      return;
+    }
+    setMsgDetail("Processing ... ");
+    showAlert(true);
+
+    event.preventDefault();
+    const formData = {
+      host_id: selectedHost.value,
+      guest_id: guestId,
+      time_in: timeInDate,
+      time_out: timeOutDate,
+      inv_type: "ONLINE"
+    };
+
+    RequestService().add(formData, (data) => {
+      setTimeout(() => {
+        navigate("/dashboard/requests/list");
+      }, 2000);
+      console.log(data);
+    }
+    
+    /*, (error) => {
+      showAlert(true);
+      setMsgDetail(error.message);
+
+      console.log(error);
+    }
+    */
+    )
+
+
+  }
 
 
 
@@ -55,29 +173,28 @@ function AddVisit(props) {
   }, []);
 
 
-  const fillHostData = () => {
-    return hostData != undefined && hostData != null && hostData.length > 0 ?
 
+
+
+  const fillDepartmentData = () => {
+    return departmentData != undefined && departmentData != null && departmentData.length > 0 ?
 
       <div className="form-group col-md-4">
 
-        <label htmlFor="host_data">
-          Host
+        <label for="department_data">
+          Department
         </label>
-        <SelectElement data={hostData} required />
+        <SelectElement data={departmentData} required />
       </div>
       : ""
   }
 
-
-
   const fillOfficeData = () => {
     return officeData != undefined && officeData != null && officeData.length > 0 ?
 
-
       <div className="form-group col-md-4">
 
-        <label htmlFor="office_data">
+        <label for="office_data">
           Office
         </label>
         <SelectElement data={officeData} required />
@@ -87,104 +204,130 @@ function AddVisit(props) {
 
 
 
-  const fillDepartmentData = () => {
-    return departmentData != undefined && departmentData != null && departmentData.length > 0 ?
-
+  const fillHostData = () => {
+    return hostData != undefined && hostData != null && hostData.length > 0 ?
 
       <div className="form-group col-md-4">
 
-        <label htmlFor="office_data">
-          Department
+        <label for="host_data">
+          Host
         </label>
-        <SelectElement data={departmentData} required />
+
+        <SelectElement data={hostData} selectedValue={selectedHost} onChange={handleHostData} />
+
       </div>
       : ""
   }
 
 
   return (
-    <div>
-      <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail="Processing..." />
-      <TabsElement active_tab="add" list_url="/dashboard/visitations/list" add_url="/dashboard/visitations/add" />
+    <form onSubmit={() => { alert("blessed") }}>
+      <div>
+        <AlertElement cssClass={alertSet === true ? "alert alert-info alert-dismissable" : "hide"} msgtype="info" msgDetail={msgDetail} />
+        <TabsElement active_tab="add" list_url="/dashboard/requests/list" add_url="/dashboard/requests/add" />
 
 
-      <div className="container-fluid main-wrapper">
-        <div className="row">
-          <div className="col-md-12">
-            <form role="form" method="POST">
+        <div className="container-fluid main-wrapper">
+          <div className="row">
+            <div className="col-md-12">
+              <form role="form" method="POST">
 
-              <fieldset className="row">
-                <legend>Personal Information:</legend>
+                <fieldset className="row">
+                  <legend>Personal Information:</legend>
 
-                <div className="form-group col-md-6">
+                  <div className="form-group col-md-6">
 
-                  <label htmlFor="first_name">
-                    First Name
-                  </label>
-                  <input type="text" className="form-control" id="first_name" />
-                </div>
+                    <label for="first_name">
+                      First Name
+                    </label>
+                    <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" id="first_name" required />
+                  </div>
 
-                <div className="form-group col-md-6">
+                  <div className="form-group col-md-6">
 
-                  <label htmlFor="first_name">
-                    Other Names
-                  </label>
-                  <input type="text" className="form-control" id="other_names" />
-                </div>
+                    <label for="other_names">
+                      Other Names
+                    </label>
+                    <input type="text" value={otherNames} onChange={(e) => setOtherNames(e.target.value)} className="form-control" id="other_names" required />
+                  </div>
 
-                <div className="form-group col-md-12">
+                  <div className="form-group col-md-12">
 
-                  <label htmlFor="first_name">
-                    Address :
-                  </label>
-                  <input autoComplete="home street-address" type="text" className="form-control" id="other_names" />
-                </div>
-              </fieldset> <br />
-              <fieldset className="row">
-                <legend>Host Information:</legend>
+                    <label for="address">
+                      Address :
+                    </label>
+                    <input value={address} onChange={(e) => setAddress(e.target.value)} autocomplete="home street-address" type="text" className="form-control" id="address" required />
+                  </div>
 
-
-                {fillDepartmentData()}
-                {fillOfficeData()}
-                {fillHostData()}
+                  <div className="form-group col-md-12">
 
 
-              </fieldset>
-              <br />
-              <fieldset className="row">
-                <legend>Time Information:</legend>
-                <div className="form-group col-md-6">
-
-                  <label htmlFor="exampleInputPassword1">
-                    Time In : &nbsp;
-                  </label>
-                  <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
-                </div>
-
-                <div className="form-group col-md-6">
-
-                  <label htmlFor="exampleInputPassword1">
-                    TimeOut : &nbsp;
-                  </label>
-                  <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
 
 
-                </div>
-
-              </fieldset>
 
 
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
+                    <div className="input-group input-group-lg ">
+                      <button type="button" className={profileValidate === true ? "btn btn-primary alert-success" : "btn btn-primary alert-danger"} onClick={handleValidateProfile}  >
+                        Validate
+                      </button>
+                      <span className={profileValidate === true ? " btn input-group-addon alert-success" : " btn input-group-addon alert-danger"} onClick={handleValidateProfile} >
+                        <FontAwesomeIcon icon={profileValidate === true ? faCheckCircle : faQuestionCircle} />
+                      </span>
+
+                    </div>
+
+
+                  </div>
+
+
+
+                </fieldset> <br />
+                <fieldset className="row">
+                  <legend>Host Information:</legend>
+
+
+                  {fillDepartmentData()}
+                  {fillOfficeData()}
+                  {fillHostData()}
+
+
+                </fieldset>
+                <br />
+                <fieldset className="row">
+                  <legend>Time Information:</legend>
+                  <div className="form-group col-md-6">
+
+                    <label for="exampleInputPassword1">
+                      Time In : &nbsp;
+                    </label>
+                    <DateTimePicker minDate={new Date()} onChange={changeTimeIn} value={timeInDate} />
+                  </div>
+
+                  <div className="form-group col-md-6">
+
+                    <label for="exampleInputPassword1">
+                      TimeOut : &nbsp;
+                    </label>
+                    <DateTimePicker minDate={timeInDate} onChange={changeTimeOut} value={timeOutDate} />
+
+
+                  </div>
+
+                </fieldset>
+
+
+                <button type="button" className="btn btn-primary" onClick={handleSubmit}  >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
         </div>
+
+
+
       </div>
-
-
-
-    </div>
+    </form>
   )
 }
 

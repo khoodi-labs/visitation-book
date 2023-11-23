@@ -1,19 +1,22 @@
 body {
-    background: #E5E5E5;
+   
     margin-left: 25px;
     font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     font-size: 16px;
+
+    background-image: url("../images/background-dear.png") ;
+    background-repeat: repeat-y;
 }
 
 
 .login_form {
 
-    border: 1px solid #b1a9a9;
-    border-radius: 100px 2px 50px 20px;
+    
+    
     background: #f1f1f1;
-    min-height: 550px;
+    
     padding: 40px;
-    padding-top: 120px;
+    /* padding-top: 120px; */ border-radius: 5px;
 }
 
 .login-header-text {
@@ -66,7 +69,7 @@ body {
 
 
 .login-btn {
-    width: 100%; cursor: pointer;
+    width: 100%; cursor: pointer; padding: 15px;
 }
 
 .button-login-icon {
@@ -79,19 +82,15 @@ body {
 
 .login-user-icon {
     font-size: 95px;
-    position: absolute;
-    margin-left: 20%;
-    margin-top: -150px;
-    color: #141614;
+    position: relative;
+    margin-left: 30%;
+    margin-top: -30%;
+    /* margin-top: -200px; */ 
+    color: #141614;  width: 100px;
 }
 
-.div-right-main {
+ .div-right-main  {
+    background-color: #f1f1f1;
+ }
 
-    border: 1px solid #b1a9a9;
-
-    background: #f1f1f1;
-    height: 500px;
-    padding: 40px;
-    padding-top: 120px;
-    margin-left: 10px;
-}  
+ 

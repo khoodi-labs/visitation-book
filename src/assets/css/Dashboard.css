@@ -2,11 +2,14 @@ body {
   /* font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
 
   font-family: "Mona Sans", "Mona Sans Header Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: #fff;
+ 
+  background-image: url("../images/background-dear2.png") ;
 }
 
-.Dashboard {}
-
+.Dashboard {  
+   /* background-color: #fff; */
+}
+ 
 .main-container {
   width: 96% !important;
 }
@@ -209,4 +212,7 @@ th {
 
 .btn {
   cursor: pointer;
+}
+.dear-head-master {
+  width: 40px;
 }

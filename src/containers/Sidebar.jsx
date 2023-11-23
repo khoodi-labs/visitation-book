@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import "../assets/css/Sidebar.css";
 import { faExpand, faMinimize, faDashboard, faCircleUser, faMaximize, faUsers, faBookOpen, faCogs, faHeadSideCough, faHeader, faPerson } from '@fortawesome/free-solid-svg-icons'; // Replace with the desired search icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import DearHEad from '../assets/images/dearlogo.png';
+{/* <img src={DearHEad}  className='dear-head-master'/>  </h3>
+    </div> */}
 
 function Sidebar(props) {
 
@@ -18,7 +20,7 @@ function Sidebar(props) {
     return (
         <div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`}>
             <div className="toggle-button" onClick={toggleSidebar}>
-                {expanded ? <span>  <FontAwesomeIcon icon={faMinimize} /> Minimize</span> : <span>  <FontAwesomeIcon icon={faExpand} />   </span>}
+                {expanded ? <span>   <img src={DearHEad}  className='dear-head-master'/>  VISIT BOOK</span> : <span>   <img src={DearHEad}  className='dear-head-master'/> </span>}
             </div>
             <ul>
                 <li>

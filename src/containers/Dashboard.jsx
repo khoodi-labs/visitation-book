@@ -4,10 +4,12 @@ import Main from './Main';
 import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import '../assets/css/Dashboard.css'
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import TopContainer from '../components/Common/TopContainer';
 //todo: fetch items from the backend service
 function Dashboard() {
 
 	return <div className="Dashboard">
+		 
 		<Sidebar /> 
 		<Main />
 	</div>

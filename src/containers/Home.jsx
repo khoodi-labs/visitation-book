@@ -11,13 +11,16 @@ import ListRequests from "./RequestsContainer/ListRequests";
 import ListVisits from "./VisitsContainer/ListVisits";
 import AddVisit from "./VisitsContainer/AddVisit";
 import Overview from "./Overview";
-
+import Signin from "./auth/Signin";
+ 
 
 function Home() {
+
   return (
     <Router>
       <Routes>
         <Route path="/" Component={Login} />
+        <Route path="/auth/signin" Component={Signin} />
         <Route path="/dashboard" Component={Dashboard}>
           <Route path="requests" Component={Requests } >
             <Route path="list" element={<ListRequests />} />
